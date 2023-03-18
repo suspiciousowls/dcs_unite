@@ -9,5 +9,6 @@ spec:
     app: kafka-ui
   ports:
     - name: http
-      port: 8080
-      protocol: TCP
+      port: 18080
+      targetPort: 8080
+  type: LoadBalancer
