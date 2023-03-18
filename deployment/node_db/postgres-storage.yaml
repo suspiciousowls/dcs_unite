@@ -13,7 +13,7 @@ spec:
   accessModes:
     - ReadWriteMany
   hostPath:
-    path: "/postgres-data"
+    path: "/mnt/cephfs/postgres-data"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
