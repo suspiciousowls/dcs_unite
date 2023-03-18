@@ -1,9 +1,8 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: DaemonSet
 metadata:
   name: redis-deployment
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: redis
