@@ -1,21 +1,18 @@
 apiVersion: apps/v1
-kind: DaemonSet
+kind: Deployment
 metadata:
-  name: redis-deployment
+  name: redis-insight-deployment
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: redis
+      app: redis-insight
   template:
     metadata:
       labels:
-        app: redis
+        app: redis-insight
     spec:
       containers:
-        - name: redis
-          image: redis
-          ports:
-            - containerPort: 6379
         - name: redis-insight
           image: redislabs/redisinsight:latest
           ports:

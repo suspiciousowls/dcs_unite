@@ -15,7 +15,7 @@ metadata:
   name: redis-insight-service
 spec:
   selector:
-    app: redis
+    app: redis-insight
   ports:
     - protocol: TCP
       port: 18001
