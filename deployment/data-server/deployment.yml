@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: data-server-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: data-server
+  template:
+    metadata:
+      labels:
+        app: data-server
+    spec:
+      containers:
+        - name: data-server
+          image: skylis/dcs_data_server2:latest
+          ports:
+            - containerPort: 9002
+          env:
+            - name: KAFKA_HOST
+              value: kafka-service:9092
+            - name: INFLUXDB_HOST
+              value: influxdb-service
+            - name: INFLUXDB_PORT
+              value: "8086"
+            - name: INFLUXDB_METRICS_DB_NAME
+              value: dcs_metrics_db
+            - name: KAFKA_SETTINGS_UPDATE_TOPIC
+              value: Functional.device.settings.changes
+            - name: SETTINGS_SERVER_HOST
+              value: dcs-nodes-service
+            - name: SETTINGS_SERVER_PORT
+              value: "8000"
+            - name: REDIS_HOST
+              value: redis-service
+            - name: REDIS_PORT
+              value: "6379"
+            - name: COMMON_KEY_MONITOR
+              value: values.updated.timestamp
+            - name: COMMON_KEY_PROPAGATE
+              value: values.last

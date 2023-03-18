@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: influxdb-service
+spec:
+  selector:
+    app: influxdb
+  #  ports:
+  #    - port: 8086
+  #      targetPort: 8086
+  #      name: http
+  #  type: LoadBalancer
+  type: NodePort
+  ports:
+    - port: 8086
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kapacitor-service
+spec:
+  selector:
+    app: influxdb
+  type: NodePort
+  ports:
+    - port: 9092
+#  ports:
+#    - protocol: TCP
+#      port: 9092
+#      targetPort: 9092
+#  type: LoadBalancer
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: chronograf-service
+spec:
+  selector:
+    app: influxdb
+  #  type: NodePort
+  #  ports:
+  #    - port: 8888
+  ports:
+    - protocol: TCP
+      port: 8888
+      targetPort: 8888
+  type: LoadBalancer

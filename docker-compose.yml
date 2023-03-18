@@ -1,0 +1,205 @@
+version: '3.7'
+
+services:
+
+  chronograf:
+    image: chronograf:1.8.8-alpine
+    container_name: chronograf_dcs
+    ports:
+      - "8890:8888"
+    volumes:
+      - ./chronograf/data:/var/lib/chronograf
+
+  influxdb:
+    image: influxdb:1.8.3
+    container_name: influxdb_dcs
+    ports:
+      - "8083:8083"
+      - "8086:8086"
+    volumes:
+      - ./data_influxdb:/var/lib/influxdb:rw
+
+  kapacitor:
+    image: kapacitor:1.5.7
+    container_name: kapacitor_dcs
+    ports:
+      - "9095:9092"
+    volumes:
+      - ./data_kapacitor:/var/lib/kapacitor:rw
+      - ./kapacitor.conf:/etc/kapacitor/kapacitor.conf
+
+  telegraf:
+    image: telegraf:1.16.3
+    volumes:
+      - ./telegraf.conf:/etc/telegraf/telegraf.conf
+    links:
+      - influxdb:influxdb
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana_dcs
+    ports:
+      - "4000:3000"
+    user: "0"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - ./grafana-storage:/var/lib/grafana
+      - ./grafana/provisioning/:/etc/grafana/provisioning/
+    links:
+      - influxdb:influxdb
+
+  imitator:
+    image: johnnydvaroyala/tfimitate:v2.6
+    restart: on-failure
+    environment:
+      UDP_ADR: 'host.docker.internal'
+      #UDP_ADR: '192.168.0.177'
+      UDP_PORT: '9014'
+      KAFKA_ADR: 'kafka:29092'
+      SETTINGS: 'host.docker.internal:8000'
+    depends_on:
+      - dcs_nodes
+
+  node_db:
+    image: postgres:13.0-alpine
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    #    ports:
+    #      - "15432:5432"
+    environment:
+      POSTGRES_DB: 'tfnode_db'
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'postgres'
+      DB_PORT: '5432'
+
+  dcs_nodes:
+    image: johnnydvaroyala/tfnode:v6.1
+    container_name: dcs_nodes
+    restart: on-failure
+    ports:
+      - "8000:8000"
+    depends_on:
+      - node_db
+    environment:
+      DB_ENGINE: 'django.db.backends.postgresql'
+      POSTGRES_DB: 'tfnode_db'
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'postgres'
+      DB_HOST: 'node_db'
+      DB_PORT: '5432'
+      KAFKA: 'kafka:29092'
+
+  redis_db:
+    image: redis
+    restart: always
+    ports:
+      - '6379:6379'
+
+  redis-insight:
+    image: redislabs/redisinsight:latest
+    ports:
+      - '8001:8001'
+    links:
+      - redis_db
+    depends_on:
+      - redis_db
+
+  dcs-propagate-srv:
+    image: skylis/dcs_propagate_server:latest
+    environment:
+      REDIS_HOST: redis_db
+      REDIS_PORT: 6379
+      WS_PORT: 9050
+      COMMON_KEY_MONITOR: values.updated.timestamp
+      COMMON_KEY_PROPAGATE: values.last
+    ports:
+      - '9050:9050'
+    depends_on:
+      - redis_db
+      - kafka
+
+  #  dcs-command-service:
+  #    image: skylis/dcs_command_server:latest
+  #    environment:
+  #      KAFKA_HOST: "kafka:29092"
+  #      COMMANDS_TOPIC: "test_timestamp_topic"
+  #    depends_on:
+  #      - "kafka"
+
+  dcs-data-server:
+    image: skylis/dcs_data_server2:latest
+    container_name: dcs_data_server
+    environment:
+      INFLUXDB_HOST: influxdb_dcs
+      INFLUXDB_PORT: 8086
+      INFLUXDB_METRICS_DB_NAME: dcs_metrics_db
+      KAFKA_HOST: kafka:29092
+      KAFKA_SETTINGS_UPDATE_TOPIC: Functional.device.settings.changes
+      SETTINGS_SERVER_HOST: host.docker.internal
+      SETTINGS_SERVER_PORT: "8000"
+      REDIS_HOST: redis_db
+      REDIS_PORT: 6379
+      COMMON_KEY_MONITOR: values.updated.timestamp
+      COMMON_KEY_PROPAGATE: values.last
+    ports:
+      - "9014:9002/udp"
+    depends_on:
+      - redis_db
+      - dcs_nodes
+      - kafka
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "2181:2181"
+
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    depends_on:
+      - zookeeper
+    ports:
+      - "29092:29092/tcp"
+      - "19092:19092"
+      - "9092:9092"
+    environment:
+      #KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://host.docker.internal:19092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+
+  kafdrop:
+    image: obsidiandynamics/kafdrop
+    restart: "no"
+    ports:
+      - "9900:9000"
+    environment:
+      KAFKA_BROKERCONNECT: "kafka:29092"
+      JVM_OPTS: "-Xms16M -Xmx48M -Xss180K -XX:-TieredCompilation -XX:+UseStringDeduplication -noverify"
+    depends_on:
+      - "kafka"
+
+  kafka-ui:
+    image: provectuslabs/kafka-ui
+    environment:
+      - KAFKA_CLUSTERS_0_NAME=local
+      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka:29092
+      - KAFKA_CLUSTERS_0_ZOOKEEPER=zookeeper:2181
+    ports:
+      - "14080:8080"
+
+volumes:
+  data_influxdb:
+  data_kapacitor:
+  kapacitor.conf:
+  telegraf.conf:
+
+

@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: node-db-config
+  labels:
+    app: node-db
+data:
+  POSTGRES_DB: tfnode_db
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: postgres

@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: propagate-srv-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: propagate-srv
+  template:
+    metadata:
+      labels:
+        app: propagate-srv
+    spec:
+      containers:
+        - name: propagate-srv
+          image: skylis/dcs_propagate_server:latest
+          ports:
+            - containerPort: 9050
+          env:
+            - name: REDIS_HOST
+              value: redis-service
+            - name: REDIS_PORT
+              value: "6379"
+            - name: WS_PORT
+              value: "9050"
+            - name: COMMON_KEY_MONITOR
+              value: values.updated.timestamp
+            - name: COMMON_KEY_PROPAGATE
+              value: values.last

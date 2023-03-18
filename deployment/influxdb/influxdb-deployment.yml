@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: influxdb-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: influxdb
+  template:
+    metadata:
+      labels:
+        app: influxdb
+    spec:
+      containers:
+        - name: influxdb
+          image: influxdb:1.8.3
+          ports:
+            #            - containerPort: 8083
+            - containerPort: 8086
+          env:
+            - name: INFLUXDB_USER
+              value: user
+            - name: INFLUXDB_USER_PASSWORD
+              value: secretpassword
+            - name: INFLUXDB_HOST
+              value: influxdb-service
+            - name: INFLUXDB_DB
+              value: monitoring
+          volumeMounts:
+            - mountPath: /var/lib/influxdb
+              name: influxdb-data
+
+        - name: kapacitor
+          image: kapacitor:1.5.7
+          ports:
+            - containerPort: 9092
+          #          env:
+          #            - name: KAPACITOR_INFLUXDB_0_URLS_0
+          #              value: http://influxdb-service:8086
+          volumeMounts:
+            - mountPath: /var/lib/kapacitor
+              name: kapacitor-data
+            - mountPath: /etc/kapacitor
+              name: config
+
+        - name: chronograf
+          image: chronograf:1.8.8-alpine
+          ports:
+            - containerPort: 8888
+          volumeMounts:
+            - mountPath: /var/lib/chronograf
+              name: chronograf-data
+
+      volumes:
+        - name: influxdb-data
+          persistentVolumeClaim:
+            claimName: influxdb-pv-claim
+        - name: kapacitor-data
+          persistentVolumeClaim:
+            claimName: kapacitor-pv-claim
+        - name: chronograf-data
+          persistentVolumeClaim:
+            claimName: chronograf-pv-claim
+        - name: config
+          configMap:
+            name: kapacitor

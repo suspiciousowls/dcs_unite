@@ -1,0 +1,90 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: influxdb-pv-volume
+  labels:
+    type: local
+    app: influxdb
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/influxdb-data"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: influxdb-pv-claim
+  labels:
+    app: influxdb
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: kapacitor-pv-volume
+  labels:
+    type: local
+    app: kapacitor
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/kapacitor-data"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: kapacitor-pv-claim
+  labels:
+    app: kapacitor
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: chronograf-pv-volume
+  labels:
+    type: local
+    app: chronograf
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/chronograf-data"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: chronograf-pv-claim
+  labels:
+    app: chronograf
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi

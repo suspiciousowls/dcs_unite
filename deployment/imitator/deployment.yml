@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: imitator-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: imitator
+  template:
+    metadata:
+      labels:
+        app: imitator
+    spec:
+      containers:
+        - name: imitator
+          image: johnnydvaroyala/tfimitate:v2.6
+          env:
+            - name: UDP_ADR
+              value: data-server-service
+            - name: UDP_PORT
+              value: "9002"
+            - name: KAFKA_ADR
+              value: kafka-service:9092
+            - name: SETTINGS
+              value: dcs-nodes-service:8000

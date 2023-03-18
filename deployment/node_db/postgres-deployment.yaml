@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-db-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node-db
+  template:
+    metadata:
+      labels:
+        app: node-db
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:13.0-alpine
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: 5432
+          envFrom:
+            - configMapRef:
+                name: node-db-config
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgredb
+      volumes:
+        - name: postgredb
+          persistentVolumeClaim:
+            claimName: node-db-pv-claim
