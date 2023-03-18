@@ -1,3 +1,4 @@
 /.idea/
 /postgres-data/
 /frontend-ui/build/
+/frontend-ui/_build/
