@@ -13,7 +13,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/grafana-data"
+    path: "/mnt/cephfs/grafana-data"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
