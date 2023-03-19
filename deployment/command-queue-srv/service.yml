@@ -5,6 +5,11 @@ metadata:
 spec:
   selector:
     app: command-queue-srv
-  type: NodePort
+  #  type: NodePort
+  #  ports:
+  #    - port: 9075
   ports:
-    - port: 9075
+    - protocol: TCP
+      port: 9075
+      targetPort: 9075
+  type: LoadBalancer
