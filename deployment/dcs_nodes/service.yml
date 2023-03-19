@@ -7,7 +7,7 @@ spec:
     app: dcs-nodes
   ports:
     - protocol: TCP
-      port: 18000
+      port: 8000
       targetPort: 8000
   type: LoadBalancer
 #  type: NodePort
