@@ -5,11 +5,11 @@ metadata:
 spec:
   selector:
     app: dcs-nodes
-  #  ports:
-  #    - protocol: TCP
-  #      port: 8000
-  #      targetPort: 8000
-  #  type: LoadBalancer
-  type: NodePort
   ports:
-    - port: 8000
+    - protocol: TCP
+      port: 18000
+      targetPort: 8000
+  type: LoadBalancer
+#  type: NodePort
+#  ports:
+#    - port: 8000
