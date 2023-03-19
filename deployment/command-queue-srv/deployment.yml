@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: command-queue-srv
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: command-queue-srv
+  template:
+    metadata:
+      labels:
+        app: command-queue-srv
+    spec:
+      containers:
+        - name: command-queue-srv
+          image: skylis/dcs_command_queue:latest
+          ports:
+            - containerPort: 9075
+          env:
+            - name: KAFKA_HOST
+              value: kafka-service:9092
+            - name: COMMANDS_TOPIC
+              value: dcs.device.commands
+            - name: WEB_SOCKET_PORT
+              value: "9075"
