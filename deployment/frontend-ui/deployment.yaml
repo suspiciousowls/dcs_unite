@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: dcs-front-ui
-          image: snaiperlfc/dcs-front-ui:1.0.11
+          image: snaiperlfc/dcs-front-ui:1.0.13
           imagePullPolicy: Always
           ports:
             - containerPort: 80
@@ -27,7 +27,7 @@ metadata:
 spec:
   ports:
     - protocol: TCP
-      port: 80
+      port: 18080
       targetPort: 80
   type: LoadBalancer
   #  type: NodePort
