@@ -1,0 +1,44 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: dcs-gateway
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: dcs-gateway
+  template:
+    metadata:
+      labels:
+        app: dcs-gateway
+    spec:
+      containers:
+        - name: dcs-gateway
+          image: snaiperlfc/dcs-gateway:0.0.2-SNAPSHOT
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 5000
+            initialDelaySeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 5000
+            initialDelaySeconds: 5
+      restartPolicy: Always
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: dcs-gateway
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 5000
+      targetPort: 5000
+      protocol: TCP
+  selector:
+    app: dcs-gateway
