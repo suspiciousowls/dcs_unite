@@ -5,7 +5,14 @@ metadata:
 spec:
   selector:
     app: propagate-srv
-  type: ClusterIP
+  #  type: ClusterIP
+  #  ports:
+  #    - port: 9050
+  #      targetPort: 9050
   ports:
-    - port: 9050
+    - name: ws
+      port: 9050
       targetPort: 9050
+  type: LoadBalancer
+  externalIPs:
+    - 192.168.1.178

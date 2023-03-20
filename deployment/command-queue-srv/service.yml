@@ -9,6 +9,9 @@ spec:
   #  ports:
   #    - port: 9075
   ports:
-    - port: 9075
+    - name: ws
+      port: 9075
       targetPort: 9075
-  type: ClusterIP
+  type: LoadBalancer
+  externalIPs:
+    - 192.168.1.178
