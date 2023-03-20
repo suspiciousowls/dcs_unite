@@ -9,7 +9,6 @@ spec:
   #  ports:
   #    - port: 9075
   ports:
-    - protocol: TCP
-      port: 9075
+    - port: 9075
       targetPort: 9075
-  type: LoadBalancer
+  type: ClusterIP
