@@ -15,6 +15,7 @@ spec:
       containers:
         - name: data-server
           image: skylis/dcs_data_server2:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 9002
           env:
