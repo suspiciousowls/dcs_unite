@@ -17,6 +17,9 @@ spec:
           image: grafana/grafana:latest
           ports:
             - containerPort: 3000
+          env:
+            - name: auth.anonymous.enabled
+              value: "true"
           volumeMounts:
             - mountPath: /var/lib/grafana/
               name: grafana-data
