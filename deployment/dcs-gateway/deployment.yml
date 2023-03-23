@@ -18,6 +18,9 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 5000
+          env:
+            - name: ISSUER-URI
+              value: http://keycloak:8080/auth/realms/dcs
           readinessProbe:
             httpGet:
               path: /actuator/health
