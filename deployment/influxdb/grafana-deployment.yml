@@ -17,15 +17,12 @@ spec:
           image: grafana/grafana:latest
           ports:
             - containerPort: 3000
-          env:
-            - name: auth.anonymous.enabled
-              value: "true"
           volumeMounts:
             - mountPath: /var/lib/grafana/
               name: grafana-data
-      #            - mountPath: /etc/grafana/grafana.ini
-      #              name: grafana-config
-      #              subPath: grafana.ini
+            - mountPath: /etc/grafana/grafana.ini
+              name: grafana-config
+              subPath: grafana.ini
 
       securityContext:
         runAsUser: 0
@@ -35,6 +32,6 @@ spec:
         - name: grafana-data
           persistentVolumeClaim:
             claimName: grafana-pv-claim
-#        - name: grafana-config
-#          configMap:
-#            name: grafana-ini
+        - name: grafana-config
+          configMap:
+            name: grafana-ini
