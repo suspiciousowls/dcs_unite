@@ -21,8 +21,8 @@ spec:
             - mountPath: /var/lib/grafana/
               name: grafana-data
             # - ./grafana/provisioning/:/etc/grafana/provisioning/
-            - mountPath: /etc/grafana/
-              name: grafana-config
+      #            - mountPath: /etc/grafana/
+      #              name: grafana-config
       securityContext:
         runAsUser: 0
         fsGroup: 0
@@ -32,7 +32,5 @@ spec:
           persistentVolumeClaim:
             claimName: grafana-pv-claim
         - name: grafana-config
-          persistentVolumeClaim:
-            claimName: grafana-config-pv-claim
 #          configMap:
 #            name: grafana-config
