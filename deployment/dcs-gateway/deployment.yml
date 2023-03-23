@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: dcs-gateway
-          image: snaiperlfc/dcs-gateway:0.0.8-SNAPSHOT
+          image: snaiperlfc/dcs-gateway:0.0.9-SNAPSHOT
           imagePullPolicy: Always
           ports:
             - containerPort: 5000
