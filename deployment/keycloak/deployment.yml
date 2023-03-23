@@ -1,0 +1,123 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: keycloak-postgres-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: keycloak-postgres
+  labels:
+    app: keycloak
+spec:
+  ports:
+    - port: 5432
+  selector:
+    app: keycloak
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keycloak-postgres
+spec:
+  selector:
+    matchLabels:
+      app: keycloak
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: keycloak
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:13-alpine
+          env:
+            - name: POSTGRES_PASSWORD
+              value: mysecretpassword
+            - name: POSTGRES_DB
+              value: keycloak
+          ports:
+            - containerPort: 5432
+              name: postgres
+          volumeMounts:
+            - name: keycloak-postgres-volume
+              mountPath: /var/lib/postgresql/data
+              subPath: postgres
+      volumes:
+        - name: keycloak-postgres-volume
+          persistentVolumeClaim:
+            claimName: keycloak-postgres-pvc
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: keycloak
+  labels:
+    app: keycloak
+spec:
+  type: NodePort
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
+      nodePort: 30001
+  selector:
+    app: keycloak
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keycloak
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: keycloak
+  template:
+    metadata:
+      labels:
+        app: keycloak
+    spec:
+      containers:
+        - name: keycloak
+          image: jboss/keycloak:16.0.1
+          env:
+            - name: DB_VENDOR
+              value: POSTGRES
+            - name: DB_ADDR
+              value: keycloak-postgres
+            - name: DB_DATABASE
+              value: keycloak
+            - name: DB_USER
+              value: postgres
+            - name: DB_PASSWORD
+              value: mysecretpassword
+            - name: KEYCLOAK_USER
+              value: admin
+            - name: KEYCLOAK_PASSWORD
+              value: secret
+          ports:
+            - containerPort: 8080
+              name: http
+          readinessProbe:
+            httpGet:
+              path: '/auth/realms/master'
+              port: 8080
+            initialDelaySeconds: 90
+            timeoutSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: '/auth/realms/master'
+              port: 8080
+            initialDelaySeconds: 90
+            periodSeconds: 15
+            timeoutSeconds: 5
