@@ -20,7 +20,7 @@ spec:
             - containerPort: 5000
           env:
             - name: ISSUER-URI
-              value: http://keycloak:8080/auth/realms/dcs
+              value: http://keycloak/auth/realms/dcs
             - name: CLIENT-SECRET
               value: 0OrPOO5X4orXT10Nm4FzjAbxLVVGRS6i
           readinessProbe:
