@@ -21,7 +21,7 @@ spec:
             - mountPath: /var/lib/grafana/
               name: grafana-data
             # - ./grafana/provisioning/:/etc/grafana/provisioning/
-            - mountPath: /etc/grafana
+            - mountPath: /etc/grafana/
               name: grafana-config
       securityContext:
         runAsUser: 0
