@@ -68,14 +68,6 @@ spec:
     - name: http
       port: 18080
       targetPort: 8080
-  type: LoadBalancer
-  externalIPs:
-    - 192.168.1.178
-  #  type: NodePort
-  #    - name: http
-  #      port: 8080
-  #      targetPort: 8080
-  #      nodePort: 30001
   selector:
     app: keycloak
 ---
