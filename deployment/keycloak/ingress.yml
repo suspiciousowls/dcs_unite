@@ -2,17 +2,16 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: keycloak-ingress
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
+  ingressClassName: nginx
   rules:
-    - host: keycloak.dcs
+    - host: keycloak:18080
       http:
         paths:
-          - path: /auth(/|$)(.*)
+          - path: /
             pathType: Prefix
             backend:
               service:
                 name: keycloak
                 port:
-                  number: 8080
+                  number: 18080
