@@ -21,11 +21,15 @@ spec:
             - name: GF_AUTH_ANONYMOUS_ENABLED
               value: "true"
             - name: GF_AUTH_ANONYMOUS_ORG_NAME
-              value: HIPR
-            - name: GF_AUTH_BASIC_ENABLED
-              value: "false"
-            - name: GF_AUTH_PROXY_ENABLED
-              value: "false"
+              value: "HIPR"
+            - name: GF_AUTH_ANONYMOUS_ORG_ROLE
+              value: "Viewer"
+            #            - name: GF_AUTH_BASIC_ENABLED
+            #              value: "false"
+            #            - name: GF_AUTH_PROXY_ENABLED
+            #              value: "false"
+            - name: GF_SECURITY_ALLOW_EMBEDDING
+              value: "true"
 
           volumeMounts:
             - mountPath: /var/lib/grafana/
