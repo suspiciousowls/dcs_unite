@@ -67,7 +67,7 @@ spec:
   ports:
     - name: http
       port: 18080
-      targetPort: 8080
+      targetPort: 18080
   selector:
     app: keycloak
 ---
@@ -104,18 +104,18 @@ spec:
             - name: KEYCLOAK_PASSWORD
               value: secret
           ports:
-            - containerPort: 8080
+            - containerPort: 18080
               name: http
           readinessProbe:
             httpGet:
               path: '/auth/realms/master'
-              port: 8080
+              port: 18080
             initialDelaySeconds: 90
             timeoutSeconds: 5
           livenessProbe:
             httpGet:
               path: '/auth/realms/master'
-              port: 8080
+              port: 18080
             initialDelaySeconds: 90
             periodSeconds: 15
             timeoutSeconds: 5
