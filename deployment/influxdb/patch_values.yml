@@ -1,0 +1,6 @@
+grafana.ini:
+  auth.basic:
+    enabled: false
+  auth:
+    oauth_auto_login: true
+    disable_login_form: true
