@@ -14,15 +14,10 @@ spec:
     spec:
       containers:
         - name: dcs-gateway
-          image: snaiperlfc/dcs-gateway:0.0.26-SNAPSHOT
+          image: snaiperlfc/dcs-gateway:0.0.27-SNAPSHOT
           imagePullPolicy: Always
           ports:
             - containerPort: 5000
-          env:
-            - name: ISSUER-URI
-              value: http://keycloak:8080/auth/realms/dcs
-            - name: CLIENT-SECRET
-              value: 0OrPOO5X4orXT10Nm4FzjAbxLVVGRS6i
           readinessProbe:
             httpGet:
               path: /actuator/health
