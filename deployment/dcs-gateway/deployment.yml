@@ -40,10 +40,10 @@ apiVersion: v1
 metadata:
   name: dcs-gateway
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - port: 5000
-      targetPort: 5000
+      #      targetPort: 5000
       protocol: TCP
   selector:
     app: dcs-gateway
