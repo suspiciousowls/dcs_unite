@@ -22,11 +22,11 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: master-node
+    - host: redis
       http:
         paths:
-          - path: /redis
-            pathType: ImplementationSpecific
+          - path: /
+            pathType: Prefix
             backend:
               service:
                 name: redis-insight-service
