@@ -18,9 +18,11 @@ metadata:
   labels:
     app: keycloak
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   ports:
     - name: http
       port: 8080
   selector:
     app: keycloak
+  externalIPs:
+    - 192.168.1.178
