@@ -19,7 +19,6 @@ metadata:
   name: redis-insight-ingress
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   rules:
@@ -27,7 +26,7 @@ spec:
       http:
         paths:
           - path: /redis
-            pathType: Prefix
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: redis-insight-service
