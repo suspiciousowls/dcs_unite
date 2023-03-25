@@ -7,10 +7,11 @@ spec:
   selector:
     app: redis-insight
   ports:
-    - protocol: TCP
+    - name: http
+      protocol: TCP
       port: 18001
       targetPort: 8001
-  type: ClusterIP
+  type: LoadBalancer
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -29,4 +30,4 @@ spec:
               service:
                 name: redis-insight-service
                 port:
-                  number: 18001
+                  name: http
