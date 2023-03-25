@@ -29,7 +29,7 @@ spec:
     - protocol: TCP
       port: 18080
       targetPort: 80
-  type: LoadBalancer
+  type: ClusterIP
   #  type: NodePort
   #  ports:
   #    - port: 80
@@ -39,20 +39,20 @@ spec:
   selector:
     app: dcs-front-ui
 ---
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: dcs-front-ui-ingress
-spec:
-  ingressClassName: nginx
-  rules:
-    - host: dcs
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: dcs-front-ui
-                port:
-                  number: 18080
+#apiVersion: networking.k8s.io/v1
+#kind: Ingress
+#metadata:
+#  name: dcs-front-ui-ingress
+#spec:
+#  ingressClassName: nginx
+#  rules:
+#    - host: dcs
+#      http:
+#        paths:
+#          - path: /
+#            pathType: Prefix
+#            backend:
+#              service:
+#                name: dcs-front-ui
+#                port:
+#                  number: 18080

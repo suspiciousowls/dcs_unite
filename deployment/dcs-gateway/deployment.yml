@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: dcs-gateway
-          image: snaiperlfc/dcs-gateway:0.0.29-SNAPSHOT
+          image: snaiperlfc/dcs-gateway:0.0.30-SNAPSHOT
           imagePullPolicy: Always
           ports:
             - containerPort: 5000
@@ -42,3 +42,21 @@ spec:
       protocol: TCP
   selector:
     app: dcs-gateway
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dcs-gateway-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: dcs
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dcs-gateway
+                port:
+                  number: 5000
