@@ -1,4 +1,4 @@
-FROM nginx:1.23.3-alpine-slim
+FROM nginx:stable-alpine
 COPY build/ /usr/share/nginx/html
 #COPY config.conf /etc/nginx/conf.d/default.conf
 
