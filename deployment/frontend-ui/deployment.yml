@@ -29,7 +29,7 @@ spec:
     - protocol: TCP
       port: 18080
       targetPort: 80
-  type: ClusterIP
+  type: LoadBalancer
   #  type: NodePort
   #  ports:
   #    - port: 80
