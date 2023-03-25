@@ -23,7 +23,7 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: dcs-front-ui-service
+  name: dcs-front-ui
 spec:
   ports:
     - protocol: TCP
@@ -53,6 +53,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: dcs-front-ui-service
+                name: dcs-front-ui
                 port:
                   number: 18080
