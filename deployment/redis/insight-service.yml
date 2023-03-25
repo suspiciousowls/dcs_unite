@@ -21,10 +21,10 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   rules:
-    - host: redis
+    - host: master-node
       http:
         paths:
-          - path: /
+          - path: /redis
             pathType: Prefix
             backend:
               service:
