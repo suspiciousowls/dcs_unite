@@ -20,6 +20,7 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
+  ingressClassName: nginx
   rules:
     - host: master-node
       http:
@@ -30,4 +31,4 @@ spec:
               service:
                 name: redis-insight-service
                 port:
-                  number: 18001
+                  name: http
