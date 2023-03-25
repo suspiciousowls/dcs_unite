@@ -25,9 +25,9 @@ spec:
       http:
         paths:
           - path: /redis
-            pathType: Prefix
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: redis-insight-service
                 port:
-                  name: http
+                  number: 18001
