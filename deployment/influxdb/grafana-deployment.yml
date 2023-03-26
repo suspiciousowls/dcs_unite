@@ -18,16 +18,26 @@ spec:
           ports:
             - containerPort: 3000
           env:
-            - name: GF_AUTH_ANONYMOUS_ENABLED
+            - name: GF_AUTH_GENERIC_OAUTH_ENABLED
               value: "true"
-            - name: GF_AUTH_ANONYMOUS_ORG_NAME
-              value: "HIPR"
-            - name: GF_AUTH_ANONYMOUS_ORG_ROLE
-              value: "Viewer"
-            #            - name: GF_AUTH_BASIC_ENABLED
-            #              value: "false"
-            #            - name: GF_AUTH_PROXY_ENABLED
-            #              value: "false"
+            - name: GF_AUTH_GENERIC_OAUTH_scopes
+              value: "openid email profile"
+            - name: GF_AUTH_GENERIC_OAUTH_name
+              value: "Oauth"
+            - name: GF_AUTH_GENERIC_OAUTH_TLS_SKIP_VERIFY_INSECURE
+              value: "true"
+            - name: GF_AUTH_GENERIC_OAUTH_ALLOW_SIGN_UP
+              value: "true"
+            - name: GF_AUTH_GENERIC_OAUTH_CLIENT_ID
+              value: "grafana"
+            - name: GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET
+              value: ulrUcPF4c86NNpKxHTak9vVDGPHppyFl
+            - name: GF_AUTH_GENERIC_OAUTH_AUTH_URL
+              value: "https://keycloak:8080/auth/realms/dcs/protocol/openid-connect/auth"
+            - name: GF_AUTH_GENERIC_OAUTH_TOKEN_URL
+              value: "https://keycloak:8080/auth/realms/dcs/protocol/openid-connect/token"
+            - name: GF_AUTH_GENERIC_OAUTH_API_URL
+              value: "https://keycloak:8080/auth/realms/dcs/protocol/openid-connect/userinfo"
             - name: GF_SECURITY_ALLOW_EMBEDDING
               value: "true"
 
