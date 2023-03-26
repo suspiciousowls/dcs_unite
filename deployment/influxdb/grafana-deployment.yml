@@ -23,7 +23,7 @@ spec:
             - name: GF_AUTH_GENERIC_OAUTH_SCOPES
               value: openid email profile
             - name: GF_AUTH_GENERIC_OAUTH_NAME
-              value: "Oauth"
+              value: "Keycloak"
             - name: GF_AUTH_GENERIC_OAUTH_TLS_SKIP_VERIFY_INSECURE
               value: "true"
             - name: GF_AUTH_GENERIC_OAUTH_ALLOW_SIGN_UP
@@ -38,6 +38,8 @@ spec:
               value: "http://keycloak:8080/auth/realms/dcs/protocol/openid-connect/token"
             - name: GF_AUTH_GENERIC_OAUTH_API_URL
               value: "http://keycloak:8080/auth/realms/dcs/protocol/openid-connect/userinfo"
+            - name: GF_AUTH_GENERIC_OAUTH_REDIRECT_URI
+              value: "http://monitoring/login/generic_oauth"
             - name: GF_SECURITY_ALLOW_EMBEDDING
               value: "true"
 
