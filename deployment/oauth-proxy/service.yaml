@@ -1,0 +1,17 @@
+---
+# service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: oauth-proxy
+  name: oauth-proxy
+spec:
+  type: ClusterIP
+  ports:
+    - port: 4180
+      targetPort: 4180
+      protocol: TCP
+      name: web
+  selector:
+    app: "oauth-proxy"
