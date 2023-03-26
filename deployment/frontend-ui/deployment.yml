@@ -55,7 +55,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: dcs
+    - host: dcs.127.0.0.1.nip.io
       http:
         paths:
           - path: /
