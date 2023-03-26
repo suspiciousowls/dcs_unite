@@ -63,6 +63,7 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-buffer-size: "8k"
   name: oauth2-proxy
 spec:
+  ingressClassName: nginx
   rules:
     # Refer to nginx.ingress.kubernetes.io/(auth-url|auth-signin) annotations
     # Can use `httpbin.127.0.0.1.nip.io` as well for same domain name as upstream resource
@@ -98,6 +99,7 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-buffer-size: "8k"
   name: httpbin-ingress
 spec:
+  ingressClassName: nginx
   rules:
     - host: api.dcs
       http:
