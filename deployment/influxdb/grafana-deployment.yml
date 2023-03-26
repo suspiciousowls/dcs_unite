@@ -20,9 +20,9 @@ spec:
           env:
             - name: GF_AUTH_GENERIC_OAUTH_ENABLED
               value: "true"
-            - name: GF_AUTH_GENERIC_OAUTH_scopes
-              value: "openid email profile"
-            - name: GF_AUTH_GENERIC_OAUTH_name
+            - name: GF_AUTH_GENERIC_OAUTH_SCOPES
+              value: openid email profile
+            - name: GF_AUTH_GENERIC_OAUTH_NAME
               value: "Oauth"
             - name: GF_AUTH_GENERIC_OAUTH_TLS_SKIP_VERIFY_INSECURE
               value: "true"
