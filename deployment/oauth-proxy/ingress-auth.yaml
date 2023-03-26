@@ -34,7 +34,7 @@ spec:
           args:
             - "--email-domain=*"
             - "--skip-provider-button=true"
-            - "--provider=oidc"
+            - "--provider=keycloak-oidc"
             - "--insecure-oidc-allow-unverified-email=true"
             - "--http-address=0.0.0.0:4180"
             # Add ID token to 'Authorization' header in auth response for NGINX to pass to upstream'
