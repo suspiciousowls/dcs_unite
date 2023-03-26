@@ -33,11 +33,11 @@ spec:
             - name: GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET
               value: ulrUcPF4c86NNpKxHTak9vVDGPHppyFl
             - name: GF_AUTH_GENERIC_OAUTH_AUTH_URL
-              value: "https://keycloak:8080/auth/realms/dcs/protocol/openid-connect/auth"
+              value: "http://keycloak:8080/auth/realms/dcs/protocol/openid-connect/auth"
             - name: GF_AUTH_GENERIC_OAUTH_TOKEN_URL
-              value: "https://keycloak:8080/auth/realms/dcs/protocol/openid-connect/token"
+              value: "http://keycloak:8080/auth/realms/dcs/protocol/openid-connect/token"
             - name: GF_AUTH_GENERIC_OAUTH_API_URL
-              value: "https://keycloak:8080/auth/realms/dcs/protocol/openid-connect/userinfo"
+              value: "http://keycloak:8080/auth/realms/dcs/protocol/openid-connect/userinfo"
             - name: GF_SECURITY_ALLOW_EMBEDDING
               value: "true"
 
