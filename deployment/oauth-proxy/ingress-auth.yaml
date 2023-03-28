@@ -98,10 +98,10 @@ metadata:
     # Fix for 'upstream sent too big header while reading response header from upstream'
     nginx.ingress.kubernetes.io/proxy-buffer-size: "8k"
     nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "PUT, GET, POST, OPTIONS"
+    nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
     nginx.ingress.kubernetes.io/configuration-snippet: |
-      add_header Access-Control-Allow-Origin $http_origin;
-      add_header Access-Control-Allow-Methods "POST, GET, OPTIONS";
-      add_header Access-Control-Allow-Credentials true;
+      more_set_headers "Access-Control-Allow-Origin: $http_origin";
   name: httpbin-ingress
 spec:
   ingressClassName: nginx
