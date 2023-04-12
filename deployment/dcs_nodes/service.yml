@@ -30,7 +30,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: dcs.127.0.0.1.nip.io
+    - host: dcs.k8s-hipr.nip.io
       http:
         paths:
           - path: /api(/|$)(.*)
