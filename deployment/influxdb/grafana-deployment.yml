@@ -18,36 +18,36 @@ spec:
           ports:
             - containerPort: 3000
           env:
-#            - name: GF_AUTH_ANONYMOUS_ENABLED
-            #              value: "true"
-            #            - name: GF_AUTH_ANONYMOUS_ORG_NAME
-            #              value: "HIPR"
-            #            - name: GF_AUTH_ANONYMOUS_ORG_ROLE
-            #              value: "Viewer"
-            #            - name: GF_AUTH_GENERIC_OAUTH_ENABLED
-            #              value: "true"
-            #            - name: GF_AUTH_GENERIC_OAUTH_SCOPES
-            #              value: openid email profile
-            #            - name: GF_AUTH_GENERIC_OAUTH_NAME
-            #              value: "Keycloak"
-            #            - name: GF_AUTH_GENERIC_OAUTH_TLS_SKIP_VERIFY_INSECURE
-            #              value: "true"
-            #            - name: GF_AUTH_GENERIC_OAUTH_ALLOW_SIGN_UP
-            #              value: "true"
-            #            - name: GF_AUTH_GENERIC_OAUTH_CLIENT_ID
-            #              value: "grafana"
-            #            - name: GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET
-            #              value: "ulrUcPF4c86NNpKxHTak9vVDGPHppyFl"
-            #            - name: GF_AUTH_GENERIC_OAUTH_AUTH_URL
-            #              value: "http://keycloak:8080/auth/realms/dcs/protocol/openid-connect/auth"
-            #            - name: GF_AUTH_GENERIC_OAUTH_TOKEN_URL
-            #              value: "http://keycloak:8080/auth/realms/dcs/protocol/openid-connect/token"
-            #            - name: GF_AUTH_GENERIC_OAUTH_API_URL
-            #              value: "http://keycloak:8080/auth/realms/dcs/protocol/openid-connect/userinfo"
-            #            - name: GF_SERVER_ROOT_URL
-            #              value: "http://monitoring/"
-            #            - name: GF_AUTH_SIGNOUT_REDIRECT_URL
-            #              value: "http://keycloak:8080/auth/realms/dcs/protocol/openid-connect/logout?redirect_uri=http://monitoring/"
+            - name: GF_AUTH_ANONYMOUS_ENABLED
+              value: "true"
+            - name: GF_AUTH_ANONYMOUS_ORG_NAME
+              value: "HIPR"
+            - name: GF_AUTH_ANONYMOUS_ORG_ROLE
+              value: "Viewer"
+            - name: GF_AUTH_GENERIC_OAUTH_ENABLED
+              value: "true"
+            - name: GF_AUTH_GENERIC_OAUTH_SCOPES
+              value: openid email profile
+            - name: GF_AUTH_GENERIC_OAUTH_NAME
+              value: "Keycloak"
+            - name: GF_AUTH_GENERIC_OAUTH_TLS_SKIP_VERIFY_INSECURE
+              value: "true"
+            - name: GF_AUTH_GENERIC_OAUTH_ALLOW_SIGN_UP
+              value: "true"
+            - name: GF_AUTH_GENERIC_OAUTH_CLIENT_ID
+              value: "grafana"
+            - name: GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET
+              value: "ulrUcPF4c86NNpKxHTak9vVDGPHppyFl"
+            - name: GF_AUTH_GENERIC_OAUTH_AUTH_URL
+              value: "http://keycloak:8080/auth/realms/dcs/protocol/openid-connect/auth"
+            - name: GF_AUTH_GENERIC_OAUTH_TOKEN_URL
+              value: "http://keycloak:8080/auth/realms/dcs/protocol/openid-connect/token"
+            - name: GF_AUTH_GENERIC_OAUTH_API_URL
+              value: "http://keycloak:8080/auth/realms/dcs/protocol/openid-connect/userinfo"
+            - name: GF_SERVER_ROOT_URL
+              value: "http://monitoring/"
+            - name: GF_AUTH_SIGNOUT_REDIRECT_URL
+              value: "http://keycloak:8080/auth/realms/dcs/protocol/openid-connect/logout?redirect_uri=http://monitoring/"
             - name: GF_SECURITY_ALLOW_EMBEDDING
               value: "true"
 
