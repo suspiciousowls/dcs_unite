@@ -68,7 +68,7 @@ spec:
     # Refer to nginx.ingress.kubernetes.io/(auth-url|auth-signin) annotations
     # Can use `httpbin.127.0.0.1.nip.io` as well for same domain name as upstream resource
     # If using dedicated domain (i.e. auth.127.0.0.1.nip.io) OAUTH2_PROXY_COOKIE_DOMAINS need to be set 1-level higher.
-    - host: auth.127.0.0.1.nip.io
+    - host: auth.k8s-hipr.nip.io
       http:
         paths:
           - pathType: Prefix
@@ -106,7 +106,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: httpbin.127.0.0.1.nip.io
+    - host: httpbin.k8s-hipr.nip.io
       http:
         paths:
           - path: /
