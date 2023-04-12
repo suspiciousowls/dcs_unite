@@ -8,7 +8,7 @@ data:
   OAUTH2_PROXY_COOKIE_NAME: "sso_sid"
   OAUTH2_PROXY_CLIENT_ID: "dcs-ui"
   # Provide public FQDN of IdP reacheable by the proxy and public client
-  OAUTH2_PROXY_OIDC_ISSUER_URL: "http://keycloak.k8s-hipr.nip.io/auth/realms/dcs"
+  OAUTH2_PROXY_OIDC_ISSUER_URL: "http://keycloak/auth/realms/dcs"
   # To set domain to be 1-level higher to support dedicated auth domain name (see ingress-auth.yaml)
   OAUTH2_PROXY_COOKIE_DOMAINS: "k8s-hipr.nip.io"
   # To set duration for token refresh (to set duration at most the validity of tokens)
