@@ -12,6 +12,8 @@ spec:
       port: 18001
       targetPort: 8001
   type: ClusterIP
+  externalIPs:
+    - 192.168.1.178
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
