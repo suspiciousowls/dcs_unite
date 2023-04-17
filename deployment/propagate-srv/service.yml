@@ -10,10 +10,10 @@ spec:
   #    - port: 9050
   #      targetPort: 9050
   ports:
-    - name: ws
+    - name: ws50
       port: 9050
       targetPort: 9050
-    - name: ws
+    - name: ws60
       port: 9060
       targetPort: 9060
   type: LoadBalancer
