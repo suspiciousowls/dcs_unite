@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: data-server-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: data-server
+  template:
+    metadata:
+      labels:
+        app: data-server
+    spec:
+      containers:
+        - name: data-server
+          image: skylis/dcs_command_server:0.4.2
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9020
+            - containerPort: 9030
+            - containerPort: 9031
+          env:
+            - name: KAFKA_HOST
+              value: kafka-service:9092
+            - name: REDIS_HOST
+              value: redis-service
+            - name: REDIS_PORT
+              value: "6379"
+            - name: STATUS_KEY_MONITOR
+              value: status.updated.timestamp
+            - name: STATUS_KEY_PROPAGATE
+              value: status.last
+            - name: COMMANDS_TOPIC
+              value: dcs.device.commands
+            - name: BROADCAST_PORT
+              value: "9030"
+            - name: BROADCAST_MASK
+              value: "192.168.127.255"
+            - name: COMMAND_RESPONSE_PORT
+              value: "9031"
