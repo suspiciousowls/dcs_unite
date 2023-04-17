@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: command-queue-srv
-          image: skylis/dcs_command_queue:0.8.1
+          image: skylis/dcs_command_queue:0.8.2
           ports:
             - containerPort: 9075
           env:
