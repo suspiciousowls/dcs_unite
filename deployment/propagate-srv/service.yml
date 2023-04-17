@@ -13,6 +13,9 @@ spec:
     - name: ws
       port: 9050
       targetPort: 9050
+    - name: ws
+      port: 9060
+      targetPort: 9060
   type: LoadBalancer
   externalIPs:
     - 192.168.1.178

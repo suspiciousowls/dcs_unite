@@ -14,9 +14,10 @@ spec:
     spec:
       containers:
         - name: propagate-srv
-          image: skylis/dcs_propagate_server:latest
+          image: skylis/dcs_propagate_server:1.1.3
           ports:
             - containerPort: 9050
+            - containerPort: 9060
           env:
             - name: REDIS_HOST
               value: redis-service
@@ -24,7 +25,13 @@ spec:
               value: "6379"
             - name: WS_PORT
               value: "9050"
+            - name: WS_PORT_STATUS
+              value: "9060"
             - name: COMMON_KEY_MONITOR
               value: values.updated.timestamp
             - name: COMMON_KEY_PROPAGATE
               value: values.last
+            - name: STATUS_KEY_MONITOR
+              value: status.updated.timestamp
+            - name: STATUS_KEY_PROPAGATE
+              value: status.last
