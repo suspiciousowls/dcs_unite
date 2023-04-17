@@ -68,7 +68,7 @@ spec:
     # Refer to nginx.ingress.kubernetes.io/(auth-url|auth-signin) annotations
     # Can use `httpbin.127.0.0.1.nip.io` as well for same domain name as upstream resource
     # If using dedicated domain (i.e. auth.127.0.0.1.nip.io) OAUTH2_PROXY_COOKIE_DOMAINS need to be set 1-level higher.
-    - host: auth.127.0.0.1.nip.io
+    - host: auth.k8s-hipr.nip.io
       http:
         paths:
           - pathType: Prefix
@@ -90,9 +90,9 @@ kind: Ingress
 metadata:
   annotations:
     # auth-url can be set to `http://$host/oauth2/auth` or the following (more efficient?)
-    nginx.ingress.kubernetes.io/auth-url: "http://$host/oauth2/auth"
+    nginx.ingress.kubernetes.io/auth-url: "http://auth.k8s-hipr.nip.io/oauth2/auth"
     # auth-signin can be set to `http://$host/oauth2/start?rd=$escaped_request_uri` if sharing same domain as auth service
-    nginx.ingress.kubernetes.io/auth-signin: "http://$host/oauth2/start?rd=$pass_access_scheme://$http_host$escaped_request_uri"
+    nginx.ingress.kubernetes.io/auth-signin: "http://auth.k8s-hipr.nip.io/oauth2/start?rd=$pass_access_scheme://$http_host$escaped_request_uri"
     # Specify headers to pass to backend once authentication request completes.
     nginx.ingress.kubernetes.io/auth-response-headers: "x-auth-request-user, x-auth-request-email, x-auth-request-preferred-username, authorization"
     # Fix for 'upstream sent too big header while reading response header from upstream'
@@ -106,7 +106,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: httpbin.127.0.0.1.nip.io
+    - host: httpbin.k8s-hipr.nip.io
       http:
         paths:
           - path: /

@@ -20,7 +20,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: monitoring
+    - host: monitoring.k8s-hipr.nip.io
       http:
         paths:
           - path: /

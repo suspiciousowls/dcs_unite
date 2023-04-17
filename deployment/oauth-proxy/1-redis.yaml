@@ -5,7 +5,7 @@ metadata:
   name: oauth2-proxy-redis-config
 data:
   # Comment line below to use Cookie Storage instead of Redis
-  OAUTH2_PROXY_SESSION_STORE_TYPE: redis
+  OAUTH2_PROXY_SESSION_STORE_TYPE: "redis"
 #---
 #apiVersion: apps/v1
 #kind: StatefulSet

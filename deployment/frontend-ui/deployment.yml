@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: dcs-front-ui
-          image: snaiperlfc/dcs-front-ui:1.0.38
+          image: snaiperlfc/dcs-front-ui:1.0.39
           imagePullPolicy: Always
           ports:
             - containerPort: 80
@@ -42,20 +42,11 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  annotations:
-    # auth-url can be set to `http://$host/oauth2/auth` or the following (more efficient?)
-    nginx.ingress.kubernetes.io/auth-url: "http://auth.127.0.0.1.nip.io/oauth2/auth"
-    # auth-signin can be set to `http://$host/oauth2/start?rd=$escaped_request_uri` if sharing same domain as auth service
-    nginx.ingress.kubernetes.io/auth-signin: "http://auth.127.0.0.1.nip.io/oauth2/start?rd=$pass_access_scheme://$http_host$escaped_request_uri"
-    # Specify headers to pass to backend once authentication request completes.
-    nginx.ingress.kubernetes.io/auth-response-headers: "x-auth-request-user, x-auth-request-email, x-auth-request-preferred-username, authorization"
-    # Fix for 'upstream sent too big header while reading response header from upstream'
-    nginx.ingress.kubernetes.io/proxy-buffer-size: "8k"
   name: dcs-front-ui-ingress
 spec:
   ingressClassName: nginx
   rules:
-    - host: dcs.127.0.0.1.nip.io
+    - host: dcs.k8s-hipr.nip.io
       http:
         paths:
           - path: /

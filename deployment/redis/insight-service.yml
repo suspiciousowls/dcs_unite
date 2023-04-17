@@ -22,7 +22,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: redis
+    - host: redis.k8s-hipr.nip.io
       http:
         paths:
           - path: /
