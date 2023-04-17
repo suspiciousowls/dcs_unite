@@ -10,9 +10,12 @@ spec:
     - protocol: UDP
       port: 9020
       targetPort: 9020
+      name: ws20
     - protocol: UDP
       port: 9030
       targetPort: 9030
+      name: ws30
     - protocol: UDP
       port: 9031
       targetPort: 9031
+      name: ws31
