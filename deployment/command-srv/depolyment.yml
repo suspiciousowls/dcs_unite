@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: data-server-deployment
+  name: command-server-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: data-server
+      app: command-server
   template:
     metadata:
       labels:
-        app: data-server
+        app: command-server
     spec:
       containers:
-        - name: data-server
+        - name: command-server
           image: skylis/dcs_command_server:0.4.2
           imagePullPolicy: Always
           ports:
