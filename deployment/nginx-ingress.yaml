@@ -1,13 +1,13 @@
 controller:
   kind: DaemonSet
 
-  #reportNodeInternalIp: true
+  reportNodeInternalIp: true
 
   hostPort:
     enabled: true
     ports:
-      http: 81
-      https: 4443
+      http: 80
+      https: 443
 
   service:
     type: LoadBalancer
