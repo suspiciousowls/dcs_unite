@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: dcs-front-ui
-          image: skylis/dcs_web_client:0.8.37
+          image: snaiperlfc/dcs-front-ui:1.0.21
           imagePullPolicy: Always
           ports:
             - containerPort: 80
@@ -46,7 +46,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: dcs.k8s-hipr.nip.io
+    - host: hipr.k8s
       http:
         paths:
           - path: /
