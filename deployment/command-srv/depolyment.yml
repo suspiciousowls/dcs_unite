@@ -12,6 +12,7 @@ spec:
       labels:
         app: command-server
     spec:
+      hostNetwork: true
       containers:
         - name: command-server
           image: skylis/dcs_command_server:0.4.2
