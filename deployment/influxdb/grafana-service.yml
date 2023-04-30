@@ -20,7 +20,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: monitoring.k8s-hipr.nip.io
+    - host: grafana.hipr.k8s
       http:
         paths:
           - path: /
