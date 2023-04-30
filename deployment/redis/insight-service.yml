@@ -22,10 +22,10 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: redis.k8s
+    - host: k8s.127
       http:
         paths:
-          - path: /
+          - path: /redis
             pathType: Prefix
             backend:
               service:
