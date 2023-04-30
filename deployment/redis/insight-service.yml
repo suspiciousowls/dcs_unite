@@ -9,9 +9,8 @@ spec:
   ports:
     - name: http
       protocol: TCP
-      port: 18001
+      port: 80
       targetPort: 8001
-  type: NodePort
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -31,4 +30,4 @@ spec:
               service:
                 name: redis-insight-service
                 port:
-                  number: 18001
+                  name: http
