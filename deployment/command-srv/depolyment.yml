@@ -23,9 +23,9 @@ spec:
             - containerPort: 9031
           env:
             - name: KAFKA_HOST
-              value: hipr.k8s:9092
+              value: kafka-service:9092
             - name: REDIS_HOST
-              value: hipr.k8s
+              value: redis-service
             - name: REDIS_PORT
               value: "6379"
             - name: STATUS_KEY_MONITOR
