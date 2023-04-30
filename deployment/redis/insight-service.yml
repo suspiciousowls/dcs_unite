@@ -31,4 +31,4 @@ spec:
               service:
                 name: redis-insight-service
                 port:
-                  number: 18001
+                  name: http
