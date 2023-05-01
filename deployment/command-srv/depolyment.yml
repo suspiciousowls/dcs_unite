@@ -40,10 +40,10 @@ spec:
             - name: BROADCAST_PORT
               value: "9030"
             - name: BROADCAST_MASK
-              value: "192.168.127.255"
+              value: "192.168.127.1"
             - name: COMMAND_RESPONSE_PORT
               value: "9031"
             - name: COMMAND_RESPONSE_ADDRESS
               value: "192.168.127.20"
             - name: BROADCAST_HOST_ADDRESS
-              value: "192.168.127.20"
+              value: "0.0.0.0"
