@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: telegraf
-          image: docker.io/telegraf:1.5.2
+          image: docker.io/telegraf
           env:
             - name: HOSTNAME
               valueFrom:
@@ -35,14 +35,14 @@ spec:
             - name: INFLUXDB_DB
               value: monitoring
           volumeMounts:
-#            - name: sys
-            #              mountPath: /rootfs/sys
-            #              readOnly: true
+            - name: sys
+              mountPath: /rootfs/sys
+              readOnly: true
             #            - name: proc
             #              mountPath: /rootfs/proc
             #              readOnly: true
-            #            - name: docker-socket
-            #              mountPath: /var/run/docker.sock
+            - name: docker-socket
+              mountPath: /var/run/docker.sock
             #            - name: utmp
             #              mountPath: /var/run/utmp
             #              readOnly: true
@@ -50,12 +50,12 @@ spec:
               mountPath: /etc/telegraf
       terminationGracePeriodSeconds: 30
       volumes:
-        #        - name: sys
-        #          hostPath:
-        #            path: /sys
-        #        - name: docker-socket
-        #          hostPath:
-        #            path: /var/run/docker.sock
+        - name: sys
+          hostPath:
+            path: /sys
+        - name: docker-socket
+          hostPath:
+            path: /var/run/docker.sock
         #        - name: proc
         #          hostPath:
         #            path: /proc
