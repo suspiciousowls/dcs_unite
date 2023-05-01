@@ -44,6 +44,6 @@ spec:
             - name: COMMAND_RESPONSE_PORT
               value: "9031"
             - name: COMMAND_RESPONSE_ADDRESS
-              value: "0.0.0.0"
+              value: ""
             - name: BROADCAST_HOST_ADDRESS
               value: "0.0.0.0"
