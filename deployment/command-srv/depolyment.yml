@@ -15,7 +15,7 @@ spec:
       hostNetwork: true
       containers:
         - name: command-server
-          image: skylis/dcs_command_server:0.4.5
+          image: skylis/dcs_command_server:0.5.1
           imagePullPolicy: Always
           ports:
             - containerPort: 9020
@@ -40,3 +40,7 @@ spec:
               value: "192.168.127.255"
             - name: COMMAND_RESPONSE_PORT
               value: "9031"
+            - name: COMMAND_RESPONSE_ADDRESS
+              value: "192.168.127.20"
+            - name: BROADCAST_HOST_ADDRESS
+              value: "192.168.127.20"
