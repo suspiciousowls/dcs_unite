@@ -23,9 +23,9 @@ spec:
                 fieldRef:
                   fieldPath: spec.nodeName
             - name: "HOST_PROC"
-              value: "/rootfs/proc"
+              value: "/proc"
             - name: "HOST_SYS"
-              value: "/rootfs/sys"
+              value: "/sys"
             - name: INFLUXDB_USER
               value: user
             - name: INFLUXDB_USER_PASSWORD
@@ -36,7 +36,7 @@ spec:
               value: monitoring
           volumeMounts:
             - name: sys
-              mountPath: /rootfs/sys
+              mountPath: /sys
               readOnly: true
             #            - name: proc
             #              mountPath: /rootfs/proc
