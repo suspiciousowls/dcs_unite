@@ -19,7 +19,7 @@ spec:
             - containerPort: 5150
           env:
             - name: SPRING_DATASOURCE_URL
-              value: jdbc:postgresql://visualization-settings-db-service:5435/form_settings_db
+              value: jdbc:postgresql://visualization-settings-db-service:5432/form_settings_db
             - name: SPRING_DATASOURCE_USERNAME
               value: root
             - name: SPRING_DATASOURCE_PASSWORD
