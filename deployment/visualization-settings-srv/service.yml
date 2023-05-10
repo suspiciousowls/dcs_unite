@@ -8,6 +8,7 @@ spec:
   type: NodePort
   ports:
     - port: 5150
+      targetPort: 5150
       name: http
 ---
 apiVersion: networking.k8s.io/v1
