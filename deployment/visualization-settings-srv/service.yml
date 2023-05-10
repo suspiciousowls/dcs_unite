@@ -5,10 +5,10 @@ metadata:
 spec:
   selector:
     app: visualization-settings-srv
-    ports:
-     - port: 5150
-       targetPort: http
-       name: http
+  ports:
+    - port: 5150
+      targetPort: http
+      name: http
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -35,4 +35,4 @@ spec:
               service:
                 name: visualization-settings-srv
                 port:
-                  name: http
+                 name: http
