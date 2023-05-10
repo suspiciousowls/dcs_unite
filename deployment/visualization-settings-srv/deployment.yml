@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: visualization-settings-srv
-          image: skylis/dcs-client-settings:0.0.2
+          image: skylis/dcs-client-settings:0.0.3
           ports:
             - containerPort: 5150
           env:
