@@ -12,6 +12,6 @@ spec:
   #  type: LoadBalancer
   type: NodePort
   ports:
-    - port: 5435
+    - port: 5432
   selector:
     app: visualization-settings-db

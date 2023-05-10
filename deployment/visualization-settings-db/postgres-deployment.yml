@@ -17,7 +17,7 @@ spec:
           image: postgres:13.0-alpine
           imagePullPolicy: "IfNotPresent"
           ports:
-            - containerPort: 5435
+            - containerPort: 5432
           envFrom:
             - configMapRef:
                 name: visualization-settings-db-config
