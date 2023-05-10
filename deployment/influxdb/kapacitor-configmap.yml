@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: kapacitor
-  #  namespace: monitoring
+  #namespace: monitoring
   labels:
     app: kapacitor
 data:

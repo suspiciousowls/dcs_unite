@@ -22,7 +22,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: kafka.k8s-hipr.nip.io
+    - host: kafka.hipr.k8s
       http:
         paths:
           - path: /

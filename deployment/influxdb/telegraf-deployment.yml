@@ -16,16 +16,16 @@ spec:
     spec:
       containers:
         - name: telegraf
-          image: docker.io/telegraf:1.5.2
+          image: docker.io/telegraf
           env:
             - name: HOSTNAME
               valueFrom:
                 fieldRef:
                   fieldPath: spec.nodeName
             - name: "HOST_PROC"
-              value: "/rootfs/proc"
+              value: "/proc"
             - name: "HOST_SYS"
-              value: "/rootfs/sys"
+              value: "/sys"
             - name: INFLUXDB_USER
               value: user
             - name: INFLUXDB_USER_PASSWORD
@@ -36,11 +36,11 @@ spec:
               value: monitoring
           volumeMounts:
             - name: sys
-              mountPath: /rootfs/sys
+              mountPath: /sys
               readOnly: true
-            - name: proc
-              mountPath: /rootfs/proc
-              readOnly: true
+            #            - name: proc
+            #              mountPath: /rootfs/proc
+            #              readOnly: true
             - name: docker-socket
               mountPath: /var/run/docker.sock
             #            - name: utmp
@@ -56,9 +56,9 @@ spec:
         - name: docker-socket
           hostPath:
             path: /var/run/docker.sock
-        - name: proc
-          hostPath:
-            path: /proc
+        #        - name: proc
+        #          hostPath:
+        #            path: /proc
         #        - name: utmp
         #          hostPath:
         #            path: /var/run/utmp

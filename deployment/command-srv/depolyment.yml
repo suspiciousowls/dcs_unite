@@ -12,14 +12,18 @@ spec:
       labels:
         app: command-server
     spec:
+      hostNetwork: true
       containers:
         - name: command-server
-          image: skylis/dcs_command_server:0.4.2
+          image: skylis/dcs_command_server:0.5.4
           imagePullPolicy: Always
           ports:
             - containerPort: 9020
+              protocol: UDP
             - containerPort: 9030
+              protocol: UDP
             - containerPort: 9031
+              protocol: UDP
           env:
             - name: KAFKA_HOST
               value: kafka-service:9092
@@ -39,3 +43,7 @@ spec:
               value: "192.168.127.255"
             - name: COMMAND_RESPONSE_PORT
               value: "9031"
+            - name: COMMAND_RESPONSE_ADDRESS
+              value: "0.0.0.0"
+            - name: BROADCAST_HOST_ADDRESS
+              value: "0.0.0.0"

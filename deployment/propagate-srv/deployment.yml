@@ -12,6 +12,7 @@ spec:
       labels:
         app: propagate-srv
     spec:
+#      hostNetwork: true
       containers:
         - name: propagate-srv
           image: skylis/dcs_propagate_server:1.1.3
