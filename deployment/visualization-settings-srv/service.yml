@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: visualization-settings-srv
+spec:
+  selector:
+    app: visualization-settings-srv
+    ports:
+     - port: 5150
+       targetPort: http
+       name: http

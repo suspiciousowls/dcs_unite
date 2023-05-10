@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: visualization-settings-db-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: visualization-settings-db
+  template:
+    metadata:
+      labels:
+        app: visualization-settings-db
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:13.0-alpine
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: 5435
+          envFrom:
+            - configMapRef:
+                name: visualization-settings-db-config
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgredb
+      volumes:
+        - name: postgredb
+          persistentVolumeClaim:
+            claimName: visualization-settings-db-pv-claim

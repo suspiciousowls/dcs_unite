@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: visualization-settings-srv
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: visualization-settings-srv
+  template:
+    metadata:
+      labels:
+        app: visualization-settings-srv
+    spec:
+      containers:
+        - name: visualization-settings-srv
+          image: skylis/dcs-client-settings:0.0.2
+          ports:
+            - containerPort: 5150
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: 
+            - name: SPRING_DATASOURCE_USERNAME
+              value: root
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: root

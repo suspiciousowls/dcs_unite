@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: visualization-settings-db-pv-volume
+  labels:
+    type: local
+    app: visualization-settings-db
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/mnt/cephfs/postgres-data-visualization-settings-db"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: visualization-settings-db-pv-claim
+  labels:
+    app: visualization-settings-db
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi

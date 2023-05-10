@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: visualization-settings-db-config
+  labels:
+    app: visualization-settings-db
+data:
+  POSTGRES_DB: form_settings_db
+  POSTGRES_USER: root
+  POSTGRES_PASSWORD: root
