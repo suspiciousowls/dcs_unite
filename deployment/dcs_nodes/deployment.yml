@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: dcs-nodes
-          image: johnnydvaroyala/tfnode:v6.7
+          image: johnnydvaroyala/tfnode:v2W
           ports:
             - containerPort: 8000
           env:
