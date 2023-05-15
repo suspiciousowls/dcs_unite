@@ -26,7 +26,7 @@ spec:
               protocol: UDP
           env:
             - name: KAFKA_HOST
-              value: kafka-service:9092
+              value: kafka-service:19092
             - name: REDIS_HOST
               value: redis-service
             - name: REDIS_PORT
