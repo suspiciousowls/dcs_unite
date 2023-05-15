@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pgadmin
+data:
+  PGADMIN_DEFAULT_EMAIL: hipr
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: pgadmin
+  labels:
+    app: pgadmin
+type: Opaque
+data:
+  pgadmin-password: "cG9zdGdyZXM=" # hipr
