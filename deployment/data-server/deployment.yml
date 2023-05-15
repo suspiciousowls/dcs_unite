@@ -14,10 +14,10 @@ spec:
     spec:
       containers:
         - name: data-server
-          image: skylis/dcs_data_server2:latest
+          image: skylis/dcs_data_server2:0.9.7
           imagePullPolicy: Always
           ports:
-            - containerPort: 9002
+            - containerPort: 9029
           env:
             - name: KAFKA_HOST
               value: kafka-service:9092

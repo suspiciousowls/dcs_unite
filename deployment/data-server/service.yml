@@ -8,5 +8,5 @@ spec:
   type: NodePort
   ports:
     - protocol: UDP
-      port: 9002
-      targetPort: 9002
+      port: 9029
+      targetPort: 9029
