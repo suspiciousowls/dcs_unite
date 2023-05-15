@@ -15,7 +15,7 @@ spec:
       hostNetwork: true
       containers:
         - name: command-server
-          image: skylis/dcs_command_server:0.7.13
+          image: skylis/dcs_command_server:0.7.17
           imagePullPolicy: Always
           ports:
             - containerPort: 9020
