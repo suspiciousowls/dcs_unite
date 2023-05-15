@@ -40,4 +40,4 @@ spec:
       volumes:
         - name: pgadmin-data
           persistentVolumeClaim:
-            claimName: pgadmin
+            claimName: pgadmin-pv-claim
