@@ -141,6 +141,8 @@ config:
         urls:
           - "http://influxdb-service:8086"
         database: "telegraf"
+        username: user
+        password: secretpassword
   inputs:
     - statsd:
         service_address: ":8125"
