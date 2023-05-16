@@ -21,7 +21,6 @@ prometheus:
         app: prometheus
         app.kubernetes.io/instance: prometheus
         app.kubernetes.io/name: prometheus
-        app.kubernetes.io/port: 19090
 
     additionalScrapeConfigs:
       # Scrape config for service endpoints.
