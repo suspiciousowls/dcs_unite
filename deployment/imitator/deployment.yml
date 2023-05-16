@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: imitator
-          image: johnnydvaroyala/tfimitate:v2.6
+          image: johnnydvaroyala/tfimitate:v3
           env:
             - name: UDP_ADR
               value: data-server-service
