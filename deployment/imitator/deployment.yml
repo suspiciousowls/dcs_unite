@@ -19,7 +19,7 @@ spec:
             - name: UDP_ADR
               value: data-server-service
             - name: UDP_PORT
-              value: "9002"
+              value: "9029"
             - name: KAFKA_ADR
               value: kafka-service:9092
             - name: SETTINGS
