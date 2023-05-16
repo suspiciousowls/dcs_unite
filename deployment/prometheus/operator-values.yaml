@@ -15,14 +15,13 @@ grafana:
       label: grafana_dashboard
 
 prometheus:
-  service:
-    targetPort: 19090
   prometheusSpec:
     podMetadata:
       labels:
         app: prometheus
         app.kubernetes.io/instance: prometheus
         app.kubernetes.io/name: prometheus
+        app.kubernetes.io/port: 19090
 
     additionalScrapeConfigs:
       # Scrape config for service endpoints.
