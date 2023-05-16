@@ -19,14 +19,14 @@ spec:
             #            - containerPort: 8083
             - containerPort: 8086
           env:
-#            - name: INFLUXDB_USER
-            #              value: user
-            #            - name: INFLUXDB_USER_PASSWORD
-            #              value: secretpassword
+            - name: INFLUXDB_USER
+              value: user
+            - name: INFLUXDB_USER_PASSWORD
+              value: secretpassword
             - name: INFLUXDB_HOST
               value: influxdb-service
             - name: INFLUXDB_DB
-              value: telegraf
+              value: monitoring
           volumeMounts:
             - mountPath: /var/lib/influxdb
               name: influxdb-data
@@ -35,9 +35,9 @@ spec:
           image: kapacitor:1.5.7
           ports:
             - containerPort: 9092
-          #          env:
-          #            - name: KAPACITOR_INFLUXDB_0_URLS_0
-          #              value: http://influxdb-service:8086
+          env:
+            - name: KAPACITOR_INFLUXDB_0_URLS_0
+              value: http://influxdb-service:8086
           volumeMounts:
             - mountPath: /var/lib/kapacitor
               name: kapacitor-data
