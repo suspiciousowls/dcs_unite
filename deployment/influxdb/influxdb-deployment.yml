@@ -19,14 +19,14 @@ spec:
             #            - containerPort: 8083
             - containerPort: 8086
           env:
-            - name: INFLUXDB_USER
-              value: user
-            - name: INFLUXDB_USER_PASSWORD
-              value: secretpassword
+#            - name: INFLUXDB_USER
+            #              value: user
+            #            - name: INFLUXDB_USER_PASSWORD
+            #              value: secretpassword
             - name: INFLUXDB_HOST
               value: influxdb-service
             - name: INFLUXDB_DB
-              value: monitoring
+              value: telegraf
           volumeMounts:
             - mountPath: /var/lib/influxdb
               name: influxdb-data
