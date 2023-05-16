@@ -19,7 +19,7 @@ args: [ ]
 # envFromSecret: "telegraf-tokens"
 env:
   - name: HOSTNAME
-    value: "telegraf-polling-service"
+    value: "telegraf"
 # An older "volumeMounts" key was previously added which will likely
 # NOT WORK as you expect. Please use this newer configuration.
 
