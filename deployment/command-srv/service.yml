@@ -5,9 +5,9 @@ metadata:
 spec:
   selector:
     app: command-server
-  type: LoadBalancer
-  externalIPs:
-    - 192.168.127.20
+#  type: LoadBalancer
+#  externalIPs:
+#    - 192.168.127.20
   ports:
     - protocol: UDP
       port: 9020

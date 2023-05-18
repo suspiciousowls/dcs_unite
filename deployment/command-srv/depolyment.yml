@@ -12,7 +12,7 @@ spec:
       labels:
         app: command-server
     spec:
-#      hostNetwork: true
+      hostNetwork: true
       containers:
         - name: command-server
           image: skylis/dcs_command_server:0.7.19
@@ -26,7 +26,7 @@ spec:
               protocol: UDP
           env:
             - name: KAFKA_HOST
-              value: "kafka-service:9092"
+              value: "192.168.127.20:9092"
             - name: REDIS_HOST
               value: redis-service
             - name: REDIS_PORT
