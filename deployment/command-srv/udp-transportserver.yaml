@@ -7,9 +7,15 @@ listener:
   name: accept-udp
   protocol: UDP
 upstreams:
-  - name: udp-listener-upstream
+  - name: udp-listener-upstream1
     service: command-server-service
     port: 9020
+  - name: udp-listener-upstream2
+    service: command-server-service
+    port: 9030
+  - name: udp-listener-upstream3
+    service: command-server-service
+    port: 9031
 upstreamParameters:
   udpRequests: 1
 action:
