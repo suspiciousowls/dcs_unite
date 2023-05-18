@@ -2,7 +2,7 @@ kind: ConfigMap
 apiVersion: v1
 metadata:
   name: nginx-config
-  namespace: nginx-ingress
+  namespace: ingress-nginx
 data:
   stream-snippets: |
     upstream command-server-udp1 {
