@@ -6,9 +6,8 @@ metadata:
     app: pgadmin
 spec:
   type: LoadBalancer
-  externalIPs:
-    - 192.168.127.20
   ports:
-    - port: 80
+    - port: 8080
+      targetPort: 80
   selector:
     app: pgadmin
