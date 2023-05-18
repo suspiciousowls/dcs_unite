@@ -2,7 +2,7 @@ apiVersion: k8s.nginx.org/v1alpha1
 kind: GlobalConfiguration
 metadata:
   name: nginx-configuration
-  namespace: nginx-ingress
+  namespace: ingress-nginx
 spec:
   listeners:
     - name: command-server-dev-udp
