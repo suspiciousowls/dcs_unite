@@ -11,22 +11,14 @@ spec:
   externalIPs:
     - 192.168.127.20
   ports:
-    - name: http
-      port: 80
-      targetPort: 80
-      protocol: TCP
-    - name: https
-      port: 443
-      targetPort: 443
-      protocol: TCP
-    - name: proxied-udp-9020
-      port: 9020
-      targetPort: 9020
-      protocol: UDP
-    - name: proxied-udp-9030
-      port: 9030
-      targetPort: 9030
-      protocol: UDP
+#    - name: http
+#      port: 80
+#      targetPort: 80
+#      protocol: TCP
+#    - name: https
+#      port: 443
+#      targetPort: 443
+#      protocol: TCP
     - name: proxied-udp-9031
       port: 9031
       targetPort: 9031
