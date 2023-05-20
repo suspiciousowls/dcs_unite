@@ -1,5 +1,5 @@
 controller:
-#  kind: DaemonSet
+  kind: DaemonSet
 
   reportNodeInternalIp: true
 
@@ -8,7 +8,6 @@ controller:
     ports:
       http: 80
       https: 443
-      udp: 9031
 
   service:
     type: LoadBalancer

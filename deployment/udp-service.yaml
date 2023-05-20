@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: udp-services
+  namespace: ingress-nginx
+data:
+  9031: "default/device-response-receiver-service:9031"
+#  9030: "default/command-server-service:9030"
+#  9020: "default/command-server-service:9020"
