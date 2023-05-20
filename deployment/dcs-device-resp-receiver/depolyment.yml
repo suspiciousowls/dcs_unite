@@ -14,8 +14,8 @@ spec:
     spec:
 #      hostNetwork: true
       containers:
-        - name: dcs-device-response-receiver
-          image: skylis/dcs-device-responce-receiver:1.0.1
+        - name: device-response-receiver
+          image: skylis/dcs-device-response-receiver:1.0.2
           imagePullPolicy: Always
           ports:
             - containerPort: 9031

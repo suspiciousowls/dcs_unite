@@ -140,6 +140,23 @@ services:
     depends_on:
       - kafka
 
+  dcs-device-responce-receiver:
+    image: skylis/dcs-device-responce-receiver:1.0.1
+    container_name: dcs-device-responce-receiver
+    environment:
+      KAFKA_HOST: "kafka:9092"
+      REDIS_HOST: redis_db
+      REDIS_PORT: "6379"
+      STATUS_KEY_MONITOR: status.updated.timestamp
+      STATUS_KEY_PROPAGATE: status.last
+      COMMAND_RESPONSE_PORT: "9031"
+      COMMAND_RESPONSE_ADDRESS: "0.0.0.0"
+    ports:
+      - "9031:9031/udp"
+    depends_on:
+      - redis_db
+      - kafka
+
   dcs-data-server:
     image: skylis/dcs_data_server2:latest
     container_name: dcs_data_server
