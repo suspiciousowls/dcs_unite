@@ -12,7 +12,7 @@ spec:
       labels:
         app: device-response-receiver
     spec:
-      hostNetwork: true
+#      hostNetwork: true
       containers:
         - name: dcs-device-response-receiver
           image: skylis/dcs-device-responce-receiver:1.0.1
