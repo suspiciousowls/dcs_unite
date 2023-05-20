@@ -8,6 +8,8 @@ metadata:
     app.kubernetes.io/part-of: ingress-nginx
 spec:
   type: LoadBalancer
+  externalIPs:
+    - 192.168.127.20
   ports:
     - name: http
       port: 80
