@@ -19,10 +19,11 @@ spec:
 #      port: 443
 #      targetPort: 443
 #      protocol: TCP
-    - name: proxied-udp-9031
+    - name: device-response-receiver-udp
       port: 9031
       targetPort: 9031
       protocol: UDP
   selector:
+    app: device-response-receiver
     app.kubernetes.io/name: ingress-nginx
     app.kubernetes.io/part-of: ingress-nginx

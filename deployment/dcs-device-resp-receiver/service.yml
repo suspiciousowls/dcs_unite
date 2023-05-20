@@ -12,3 +12,4 @@ spec:
     - protocol: UDP
       port: 9031
       targetPort: 9031
+      name: device-response-receiver-udp
