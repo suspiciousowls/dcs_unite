@@ -1,9 +1,8 @@
 controller:
-#  kind: DaemonSet
+  kind: DaemonSet
 
   reportNodeInternalIp: true
 
-  hostNetwork: true
 
   hostPort:
     enabled: true
@@ -11,10 +10,10 @@ controller:
       http: 80
       https: 443
 
-#  service:
-#    type: LoadBalancer
-#    externalIPs:
-#      - 192.168.127.20
+  service:
+    type: LoadBalancer
+    externalIPs:
+      - 192.168.127.20
 
   metrics:
     enabled: true
