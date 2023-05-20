@@ -10,11 +10,17 @@ controller:
       https: 443
 
   service:
-    type: NodePort
-#    externalIPs:
-#      - 192.168.1.178
+    type: LoadBalancer
+    externalIPs:
+      - 192.168.127.20
 
-#  metrics:
-#    enabled: true
-#    serviceMonitor:
-#      enabled: true
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+
+  allowSnippetAnnotations: true
+
+  udp:
+    # -- Allows customization of the udp-services-configmap; defaults to $(POD_NAMESPACE)
+    configMapNamespace: "ingress-nginx/udp-services"
