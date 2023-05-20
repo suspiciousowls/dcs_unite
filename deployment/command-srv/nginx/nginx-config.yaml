@@ -4,36 +4,14 @@ metadata:
   name: nginx-config
   namespace: ingress-nginx
 data:
-  stream-snippets: |
-    upstream command-server-udp1 {
-        server command-server-service.default.svc.cluster.local:9020;
-    }
-    
-    upstream command-server-udp2 {
-        server command-server-service.default.svc.cluster.local:9030;
-    }
-    
-    upstream command-server-udp3 {
-        server command-server-service.default.svc.cluster.local:9031;
+  stream-snippets: | 
+    upstream device-response-receiver-udp {
+        server device-response-receiver-service.default.svc.cluster.local:9031;
     }
     
     server {
         listen 9031 udp;
         listen [::]:9031 udp;
-        proxy_pass command-server-udp3;
-        proxy_responses 1;
-    }
-    
-    server {
-        listen 9030 udp;
-        listen [::]:9030 udp;
-        proxy_pass command-server-udp2;
-        proxy_request 1;
-    }
-    
-    server {
-        listen 9020;
-        listen [::]:9020;
-        proxy_pass command-server-udp1;
+        proxy_pass device-response-receiver-udp;
         proxy_responses 1;
     }
