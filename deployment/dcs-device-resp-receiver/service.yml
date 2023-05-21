@@ -6,8 +6,8 @@ spec:
   selector:
     app: device-response-receiver
   type: LoadBalancer
-  externalIPs:
-    - 192.168.127.20
+#  externalIPs:
+#    - 192.168.127.20
   ports:
     - protocol: UDP
       port: 9031
