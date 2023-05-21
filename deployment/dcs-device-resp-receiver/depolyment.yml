@@ -1,9 +1,9 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: DaemonSet
 metadata:
   name: device-response-receiver-deployment
 spec:
-  replicas: 1
+#  replicas: 2
   selector:
     matchLabels:
       app: device-response-receiver
