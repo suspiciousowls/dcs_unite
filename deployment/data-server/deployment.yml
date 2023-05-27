@@ -1,9 +1,9 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: DaemonSet
 metadata:
   name: data-server-deployment
 spec:
-  replicas: 1
+#  replicas: 1
   selector:
     matchLabels:
       app: data-server
