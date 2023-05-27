@@ -16,8 +16,10 @@ kind: Ingress
 metadata:
   name: grafana-ingress
   namespace: monitoring
-#  annotations:
-#    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+  annotations:
+    #    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      more_set_headers "X-Frame-Options: same-origin";
 spec:
   ingressClassName: nginx
   rules:
