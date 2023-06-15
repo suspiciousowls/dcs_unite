@@ -3,6 +3,7 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: pvc-prometheus-operator-prometheus-0
+  namespace: monitoring
   labels:
     type: local
     app: prometheus
@@ -19,6 +20,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: prometheus-prometheus-operator-prometheus-db-prometheus-prometheus-operator-prometheus-0
+  namespace: monitoring
   labels:
     app: prometheus
     prometheus: prometheus-operator-prometheus
