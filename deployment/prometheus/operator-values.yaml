@@ -6,6 +6,11 @@ prometheus:
 fullnameOverride: prom
 
 grafana:
+  grafana.ini:
+    auth.anonymous:
+      enabled: true
+      org_name: GARNET
+      org_role: Viewer
   adminPassword: admin
   podLabels:
     app: grafana
@@ -13,11 +18,6 @@ grafana:
     dashboards:
       enabled: true
       label: grafana_dashboard
-    grafana.ini:
-      auth.anonymous:
-        enabled: true
-        org_name: GARNET
-        org_role: Viewer
 
 prometheus:
   prometheusSpec:
