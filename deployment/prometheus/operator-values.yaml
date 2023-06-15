@@ -5,6 +5,16 @@ prometheus:
 ---
 fullnameOverride: prom
 
+server:
+  persistentVolume:
+    enabled: true
+    storageClass: manual
+    accessModes:
+      - ReadWriteOnce
+    size: 40Gi
+  statefulSet:
+    enabled: true
+
 grafana:
   persistence:
     enabled: true
