@@ -6,6 +6,10 @@ prometheus:
 fullnameOverride: prom
 
 grafana:
+  persistence:
+    enabled: true
+    type: pvc
+    existingClaim: grafana-pv-claim
   grafana.ini:
     auth.anonymous:
       enabled: true
@@ -21,6 +25,13 @@ grafana:
 
 prometheus:
   prometheusSpec:
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: manual
+          resources:
+            requests:
+              storage: 64Gi
     podMetadata:
       labels:
         app: prometheus

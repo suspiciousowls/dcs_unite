@@ -1,0 +1,31 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pvc-prometheus-operator-prometheus-0
+  labels:
+    type: local
+    app: prometheus
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 64Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/cephfs/prometheus-data"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: prometheus-prometheus-operator-prometheus-db-prometheus-prometheus-operator-prometheus-0
+  labels:
+    app: prometheus
+    prometheus: prometheus-operator-prometheus
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 64Gi
