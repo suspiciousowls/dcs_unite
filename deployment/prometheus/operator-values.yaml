@@ -5,7 +5,26 @@ prometheus:
 ---
 fullnameOverride: prom
 
+server:
+  persistentVolume:
+    enabled: true
+    storageClass: manual
+    accessModes:
+      - ReadWriteOnce
+    size: 40Gi
+  statefulSet:
+    enabled: true
+
 grafana:
+  persistence:
+    enabled: true
+    type: pvc
+    existingClaim: grafana-pv-claim
+  grafana.ini:
+    auth.anonymous:
+      enabled: true
+      org_name: GARNET
+      org_role: Viewer
   adminPassword: admin
   podLabels:
     app: grafana
@@ -16,6 +35,13 @@ grafana:
 
 prometheus:
   prometheusSpec:
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: manual
+          resources:
+            requests:
+              storage: 64Gi
     podMetadata:
       labels:
         app: prometheus

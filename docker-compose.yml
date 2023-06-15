@@ -226,7 +226,7 @@ services:
       - "14080:8080"
 
   dcs-front-ui:
-    image: snaiperlfc/dcs-front-ui:1.0.35
+    image: skylis/dcs_web_client:0.8.40
     ports:
       - "3000:80"
 
