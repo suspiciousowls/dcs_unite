@@ -30,6 +30,8 @@ spec:
               value: dcs_metrics_db
             - name: KAFKA_SETTINGS_UPDATE_TOPIC
               value: Functional.device.settings.changes
+            - name: KAFKA_LOG_TOPIC
+              value: dcs.dataserver.log
             - name: SETTINGS_SERVER_HOST
               value: dcs-nodes-service
             - name: SETTINGS_SERVER_PORT
