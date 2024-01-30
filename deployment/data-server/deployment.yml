@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: data-server
-          image: skylis/dcs_data_server2:0.9.12
+          image: skylis/dcs_data_server2:0.9.24
           imagePullPolicy: Always
           ports:
             - containerPort: 9029
@@ -30,6 +30,12 @@ spec:
               value: dcs_metrics_db
             - name: KAFKA_SETTINGS_UPDATE_TOPIC
               value: Functional.device.settings.changes
+            - name: KAFKA_LOG_TOPIC
+              value: dcs.dataserver.log
+            - name: SETTINGS_SERVER_MSGBROKER_QUEUE
+              value: dcs.settings.queue
+            - name: SETTINGS_SERVER_MSGBROKER_STATUS
+              value: dcs.settings.status
             - name: SETTINGS_SERVER_HOST
               value: dcs-nodes-service
             - name: SETTINGS_SERVER_PORT
