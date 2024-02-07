@@ -10,7 +10,7 @@ spec:
   #      targetPort: 8086
   #      name: http
   #  type: LoadBalancer
-  type: ClusterIP
+  type: NodePort
   ports:
     - port: 8086
 ---
