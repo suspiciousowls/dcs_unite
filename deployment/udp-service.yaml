@@ -6,4 +6,4 @@ metadata:
 data:
   9029: "default/data-server-service:9029"
   9031: "default/device-response-receiver-service:9031"
-#  9020: "default/command-server-service:9020"
+  9020: "default/command-server-service:9020"
