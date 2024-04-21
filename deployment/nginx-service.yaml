@@ -20,11 +20,11 @@ spec:
 #      port: 443
 #      targetPort: 443
 #      protocol: TCP
-    - name: device-response-receiver-udp1
+    - name: data-server-service-udp
       port: 9029
       targetPort: 9029
       protocol: UDP
-    - name: device-response-receiver-udp2
+    - name: device-response-receiver-udp
       port: 9031
       targetPort: 9031
       protocol: UDP
