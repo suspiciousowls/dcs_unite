@@ -14,6 +14,7 @@ spec:
     spec:
       containers:
         - name: redis-insight
-          image: redislabs/redisinsight:latest
+          image: redislabs/redisinsight:1.13.1
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8001
