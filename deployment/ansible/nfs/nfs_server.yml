@@ -18,7 +18,7 @@
     - name: Add export configuration to /etc/exports
       lineinfile:
         path: /etc/exports
-        line: "/mnt/nfs 192.168.127.0/24(rw,sync,no_root_squash)"
+        line: "/home/hipr/nfs 192.168.127.0/24(rw,sync,no_root_squash)"
         insertafter: EOF
 
     - name: Apply new configurations
