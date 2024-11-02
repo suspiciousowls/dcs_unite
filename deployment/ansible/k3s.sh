@@ -229,7 +229,7 @@ kubectl get pods --namespace cert-manager
 # Step 14: Install Rancher
 helm install rancher rancher-latest/rancher \
  --namespace cattle-system \
- --set hostname=rancher.my.org \
+ --set hostname=rancher.hipr.k8s \
  --set bootstrapPassword=admin
 kubectl -n cattle-system rollout status deploy/rancher
 kubectl -n cattle-system get deploy rancher
