@@ -32,15 +32,15 @@ k3sVersion="v1.28.7+k3s1"
 
 # Set the IP addresses of the master and work nodes
 admin=192.168.127.20
-master1=192.168.1.178
-worker1=192.168.1.234
-worker2=192.168.1.211
+master1=192.168.127.20
+worker1=192.168.127.21
+worker2=192.168.127.22
 
 # User of remote machines
 user=root
 
 # Interface used on remotes
-interface=eno1
+interface=eno2
 
 # Set the virtual IP address (VIP)
 vip=192.168.3.50
