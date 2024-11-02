@@ -43,7 +43,7 @@ user=root
 interface=eno2
 
 # Set the virtual IP address (VIP)
-vip=192.168.3.50
+vip=192.168.127.20
 
 # Array of master nodes
 masters=()
