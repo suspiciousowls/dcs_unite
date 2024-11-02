@@ -31,10 +31,10 @@ KVVERSION="v0.6.3"
 k3sVersion="v1.28.7+k3s1"
 
 # Set the IP addresses of the master and work nodes
-admin=192.168.1.178
-master1=192.168.1.178
-worker1=192.168.1.234
-worker2=192.168.1.211
+admin=192.168.127.20
+master1=192.168.127.20
+worker1=192.168.127.21
+worker2=192.168.127.22
 
 # User of remote machines
 user=root
@@ -43,7 +43,7 @@ user=root
 interface=eno1
 
 # Set the virtual IP address (VIP)
-vip=192.168.1.178
+vip=192.168.127.24
 
 # Array of master nodes
 masters=()
@@ -58,7 +58,7 @@ all=($master1 $worker1 $worker2)
 allnomaster1=($worker1 $worker2)
 
 #Loadbalancer IP range
-lbrange=192.168.127.20-192.168.127.23
+lbrange=192.168.127.60-192.168.127.80
 
 #ssh certificate name variable
 certName=id_rsa
