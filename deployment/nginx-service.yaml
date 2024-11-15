@@ -11,14 +11,6 @@ spec:
   externalIPs:
     - 192.168.127.20
   ports:
-#    - name: http
-#      port: 80
-#      targetPort: 80
-#      protocol: TCP
-#    - name: https
-#      port: 443
-#      targetPort: 443
-#      protocol: TCP
     - name: data-server-service-udp
       port: 9029
       targetPort: 9029
@@ -31,4 +23,3 @@ spec:
 #    app: device-response-receiver
     app.kubernetes.io/name: ingress-nginx
     app.kubernetes.io/part-of: ingress-nginx
-# не нужен!!!

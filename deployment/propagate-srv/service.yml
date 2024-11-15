@@ -5,10 +5,6 @@ metadata:
 spec:
   selector:
     app: propagate-srv
-  #  type: ClusterIP
-  #  ports:
-  #    - port: 9050
-  #      targetPort: 9050
   ports:
     - name: ws50
       port: 9050
