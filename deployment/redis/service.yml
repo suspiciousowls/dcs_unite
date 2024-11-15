@@ -5,8 +5,8 @@ metadata:
 spec:
   selector:
     app: redis
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - port: 6379
-  externalIPs:
-    - 192.168.127.20
+#  externalIPs:
+#    - 192.168.127.20

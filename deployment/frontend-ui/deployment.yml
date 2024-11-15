@@ -29,9 +29,7 @@ spec:
     - protocol: TCP
       port: 18080
       targetPort: 80
-  type: LoadBalancer
-  externalIPs:
-    - 192.168.127.20
+  type: ClusterIP
   #  type: NodePort
   #  ports:
   #    - port: 80
