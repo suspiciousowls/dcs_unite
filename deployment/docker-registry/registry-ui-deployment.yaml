@@ -17,7 +17,7 @@ spec:
             - name: REGISTRY_TITLE
               value: My Private Docker Registry
             - name: NGINX_PROXY_PASS_URL
-              value: http://registry:5000
+              value: https://registry:5000
             - name: SINGLE_REGISTRY
               value: 'true'
           image: joxit/docker-registry-ui:latest
