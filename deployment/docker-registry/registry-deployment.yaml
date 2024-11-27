@@ -16,10 +16,10 @@ spec:
       - env:
         - name: REGISTRY_HTTP_SECRET
           value: secret
-#        - name: REGISTRY_HTTP_TLS_CERTIFICATE
-#          value: /certs/tls.crt
-#        - name: REGISTRY_HTTP_TLS_KEY
-#          value: /certs/tls.key
+        - name: REGISTRY_HTTP_TLS_CERTIFICATE
+          value: /certs/tls.crt
+        - name: REGISTRY_HTTP_TLS_KEY
+          value: /certs/tls.key
         image: registry:2.7
         name: registry
         ports:
@@ -30,8 +30,8 @@ spec:
           - mountPath: /etc/docker/registry/config.yml
             name: config-volume
             subPath: config.yml
-#          - mountPath: /certs
-#            name: tls-certs
+          - mountPath: /certs
+            name: tls-certs
       volumes:
         - name: registry-data
           persistentVolumeClaim:
@@ -39,6 +39,6 @@ spec:
         - configMap:
             name: registry-config
           name: config-volume
-#        - name: tls-certs
-#          secret:
-#            secretName: registry-tls
+        - name: tls-certs
+          secret:
+            secretName: registry-tls
