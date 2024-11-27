@@ -38,7 +38,7 @@ spec:
       volumes:
         - name: mongodb-data
           persistentVolumeClaim:
-            claimName: experiment-svc-mongodb-pvc
+            claimName: mongodb-experiment-svc-pv-claim
         - name: config-volume
           configMap:
             name: experiment-svc-mongodb-config

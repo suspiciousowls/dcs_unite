@@ -17,7 +17,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mongodb-experiment-svc-pvc
+  name: mongodb-experiment-svc-pv-claim
 spec:
   accessModes:
     - ReadWriteOnce
