@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: registry
+  name: registry-service
 spec:
   ports:
   - port: 5000
-    targetPort: 5000
+#    targetPort: 5000
   selector:
     app: registry
   type: LoadBalancer
