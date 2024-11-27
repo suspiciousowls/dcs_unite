@@ -7,13 +7,13 @@ metadata:
     type: local
     app: registry
 spec:
-  storageClassName: manual
+  storageClassName: standard
   capacity:
     storage: 100Gi
   accessModes:
     - ReadWriteMany
   hostPath:
-    path: "/mnt/cephfs/registry-data"
+    path: "/home/hipr/registry-data"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -22,7 +22,7 @@ metadata:
   labels:
     app: registry
 spec:
-  storageClassName: manual
+  storageClassName: standard
   accessModes:
     - ReadWriteMany
   resources:

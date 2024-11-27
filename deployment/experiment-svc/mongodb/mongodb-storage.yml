@@ -6,13 +6,13 @@ metadata:
     type: local
     app: experiment-service
 spec:
-  storageClassName: manual
+  storageClassName: standard
   capacity:
     storage: 10Gi
   accessModes:
     - ReadWriteMany
   hostPath:
-    path: "/mnt/cephfs/mongodb-data-experiment-svc"
+    path: "/home/hipr/mongodb-data-experiment-svc"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -26,4 +26,4 @@ spec:
   resources:
     requests:
       storage: 10Gi
-  storageClassName: manual
+  storageClassName: standard
