@@ -17,7 +17,7 @@ spec:
         - name: REGISTRY_HTTP_SECRET
           value: secret
         - name: REGISTRY_HTTP_TLS_CERTIFICATE
-          value: /certs/tls.crt
+          value: /certs/kube-root-ca.crt
         - name: REGISTRY_HTTP_TLS_KEY
           value: /certs/tls.key
         image: registry:2.7
