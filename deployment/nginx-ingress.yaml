@@ -1,8 +1,7 @@
 controller:
-  kind: DaemonSet
+  kind: DaemonSet # Runs on every node, ideal for local traffic routing in bare-metal environments.
 
-  reportNodeInternalIp: true
-
+  reportNodeInternalIp: true # Uses node's internal IP for Ingress Controller communication.
 
   hostPort:
     enabled: true
@@ -11,23 +10,30 @@ controller:
       https: 443
 
   publishService:
-    # -- Enable 'publishService' or not
-    enabled: true
+    enabled: true # Ensures external IP of the service is published.
 
   service:
     type: LoadBalancer
     externalIPs:
-      - 192.168.127.20
+      - 192.168.127.20 # Your desired external IP.
 
   metrics:
     enabled: true
     serviceMonitor:
-      enabled: true
+      enabled: true # Enables monitoring via Prometheus.
 
-  allowSnippetAnnotations: true
+  allowSnippetAnnotations: true # Allows custom NGINX configuration via annotations in Ingress resources.
 
   udp:
-    # -- Allows customization of the udp-services-configmap; defaults to $(POD_NAMESPACE)
-    configMapNamespace: "ingress-nginx/udp-services"
+    configMapNamespace: "ingress-nginx" # Use default namespace or customize as necessary.
 
-  proxy-body-size: 1000m
+  extraArgs: # Use this for configurations like proxy body size.
+    proxy-body-size: "1000m"
+
+  config:
+    # Ensure larger request sizes are supported.
+    proxy-body-size: "1000m"
+
+  admissionWebhooks:
+    enabled: true # Ensure admission webhook is enabled for validating Ingress.
+    timeoutSeconds: 10
