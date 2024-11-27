@@ -31,14 +31,15 @@ metadata:
   name: registry-ui-ingress
   annotations:
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "1000m"
 spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - registry-ui.hipr.k8s
+        - registry.hipr.k8s
       secretName: registry-tls
   rules:
-    - host: registry-ui.hipr.k8s
+    - host: registry.hipr.k8s
       http:
         paths:
           - path: /

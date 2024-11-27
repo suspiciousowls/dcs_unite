@@ -42,27 +42,3 @@ spec:
         - name: tls-certs
           secret:
             secretName: registry-tls
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: registry-ingress
-  annotations:
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-spec:
-  ingressClassName: nginx
-  tls:
-    - hosts:
-        - registry.hipr.k8s
-      secretName: registry-tls
-  rules:
-    - host: registry.hipr.k8s
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: registry
-                port:
-                  number: 5000
