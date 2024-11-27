@@ -35,7 +35,7 @@ spec:
       volumes:
         - name: registry-data
           persistentVolumeClaim:
-            claimName: node-db-pv-claim
+            claimName: registry-pv-claim
         - configMap:
             name: registry-config
           name: config-volume
