@@ -1,0 +1,19 @@
+[req]
+distinguished_name = req_distinguished_name
+x509_extensions = v3_ca
+prompt = no
+
+[req_distinguished_name]
+countryName = RU
+stateOrProvinceName = SomeState
+localityName = SomeCity
+organizationName = DCS
+commonName = registry.hipr.k8s  # The Common Name (CN) will still be used, but SAN is now critical
+
+[v3_ca]
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = registry.hipr.k8s
+DNS.2 = registry-ui.hipr.k8s
+DNS.3 = hipr.k8s  # Add other SAN entries as necessary
