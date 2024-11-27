@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: experiment-svc-mongodb
-          image: mongo:5.0
+          image: mongo
           ports:
             - containerPort: 27017
           env:
