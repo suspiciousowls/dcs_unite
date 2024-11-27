@@ -13,24 +13,30 @@ spec:
         app: registry-ui
     spec:
       containers:
-      - env:
-        - name: REGISTRY_TITLE
-          value: My Private Docker Registry
-        - name: NGINX_PROXY_PASS_URL
-          value: http://registry:5000
-        - name: SINGLE_REGISTRY
-          value: 'true'
-        image: joxit/docker-registry-ui:latest
-        name: registry-ui
-        ports:
-        - containerPort: 80
+        - env:
+            - name: REGISTRY_TITLE
+              value: My Private Docker Registry
+            - name: NGINX_PROXY_PASS_URL
+              value: http://registry:5000
+            - name: SINGLE_REGISTRY
+              value: 'true'
+          image: joxit/docker-registry-ui:latest
+          name: registry-ui
+          ports:
+            - containerPort: 80
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: registry-ui-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
   ingressClassName: nginx
+  tls:
+    - hosts:
+        - registry-ui.hipr.k8s
+      secretName: registry-tls
   rules:
     - host: registry-ui.hipr.k8s
       http:
