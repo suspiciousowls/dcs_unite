@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: experiment-svc-deployment
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: experiment-service
+  template:
+    metadata:
+      labels:
+        app: experiment-service
+    spec:
+      hostNetwork: true
+      containers:
+        - name: experiment-service
+          image: registry.hipr.k8s/experiment-service:0.0.3-SNAPSHOT
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_DATA_MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: experiment-svc-mongodb-secret
+                  key: MONGODB_URI
