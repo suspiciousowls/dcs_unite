@@ -40,6 +40,7 @@ metadata:
   name: registry-ingress
   annotations:
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "100m"  # or more if needed
 spec:
   ingressClassName: nginx
   tls:
