@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: registry-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: registry-ui
+  template:
+    metadata:
+      labels:
+        app: registry-ui
+    spec:
+      containers:
+      - env:
+        - name: REGISTRY_TITLE
+          value: My Private Docker Registry
+        - name: NGINX_PROXY_PASS_URL
+          value: http://registry:5000
+        - name: SINGLE_REGISTRY
+          value: 'true'
+        image: joxit/docker-registry-ui:latest
+        name: registry-ui
+        ports:
+        - containerPort: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: registry-ui-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: registry-ui.hipr.k8s
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: registry-ui
+                port:
+                  number: 80

@@ -5,13 +5,7 @@ services:
     ports:
       - "5000:5000"
     environment:
-      #REGISTRY_HTTP_HEADERS_Access-Control-Allow-Origin: "['*']"
-      #REGISTRY_HTTP_TLS_CERTIFICATE: /certs/kov-slave.crt
-      #REGISTRY_HTTP_TLS_KEY: /certs/kov-slave.key
       REGISTRY_HTTP_SECRET: secret
-      #REGISTRY_AUTH: htpasswd
-      #REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
-      #REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
     volumes:
       - ./data:/var/lib/registry
       - ./registry-config/simple.yml:/etc/docker/registry/config.yml
