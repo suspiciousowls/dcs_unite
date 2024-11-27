@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: root-ca
+  namespace: default
+spec:
+  secretName: root-ca-tls
+  isCA: true
+  commonName: root-ca
+  issuerRef:
+    name: selfsigned-issuer
+    kind: Issuer
