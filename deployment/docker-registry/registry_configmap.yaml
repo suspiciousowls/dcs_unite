@@ -29,7 +29,7 @@ metadata:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: registry-tls
+  name: registry-tls-cert
 #  namespace: default
 spec:
   secretName: registry-tls
