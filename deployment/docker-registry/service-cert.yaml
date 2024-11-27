@@ -8,6 +8,6 @@ spec:
   issuerRef:
     name: ca-issuer
     kind: Issuer
-  commonName: registry.hipr.k8s
+  commonName: registry.hipr.k8s.ru
   dnsNames:
-    - registry.hipr.k8s
+    - registry.hipr.k8s.ru

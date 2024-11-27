@@ -36,10 +36,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - registry.hipr.k8s
+        - registry.hipr.k8s.ru
       secretName: registry-tls
   rules:
-    - host: registry.hipr.k8s
+    - host: registry.hipr.k8s.ru
       http:
         paths:
           - path: /
