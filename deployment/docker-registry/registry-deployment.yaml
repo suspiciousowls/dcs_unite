@@ -33,21 +33,3 @@ spec:
         - configMap:
             name: registry-config
           name: config-volume
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: registry-ingress
-spec:
-  ingressClassName: nginx
-  rules:
-    - host: registry.hipr.k8s
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: registry
-                port:
-                  number: 5000
