@@ -25,7 +25,7 @@ controller:
   allowSnippetAnnotations: true # Allows custom NGINX configuration via annotations in Ingress resources.
 
   udp:
-    configMapNamespace: "ingress-nginx" # Use default namespace or customize as necessary.
+    configMapNamespace: "ingress-nginx/udp-services" # Use default namespace or customize as necessary.
 
   extraArgs: # Use this for configurations like proxy body size.
     proxy-body-size: "1000m"
