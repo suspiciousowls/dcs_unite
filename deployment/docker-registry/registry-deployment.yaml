@@ -1,3 +1,17 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: registry-tls
+#  namespace: default
+spec:
+  secretName: registry-tls
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: registry.hipr.k8s
+  dnsNames:
+    - registry.hipr.k8s
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -16,10 +30,10 @@ spec:
       - env:
         - name: REGISTRY_HTTP_SECRET
           value: secret
-#        - name: REGISTRY_HTTP_TLS_CERTIFICATE
-#          value: /certs/tls.crt
-#        - name: REGISTRY_HTTP_TLS_KEY
-#          value: /certs/tls.key
+        - name: REGISTRY_HTTP_TLS_CERTIFICATE
+          value: /certs/tls.crt
+        - name: REGISTRY_HTTP_TLS_KEY
+          value: /certs/tls.key
         image: registry:2.7
         name: registry
         ports:
@@ -39,9 +53,9 @@ spec:
         - configMap:
             name: registry-config
           name: config-volume
-#        - name: tls-certs
-#          secret:
-#            secretName: registry-tls
+        - name: tls-certs
+          secret:
+            secretName: registry-tls
 ---
 #apiVersion: v1
 #kind: Secret
