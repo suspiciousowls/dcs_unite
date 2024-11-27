@@ -25,4 +25,18 @@ data:
 kind: ConfigMap
 metadata:
   name: registry-config
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: registry-tls
+#  namespace: default
+spec:
+  secretName: registry-tls
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: registry.hipr.k8s
+  dnsNames:
+    - registry.hipr.k8s
 
