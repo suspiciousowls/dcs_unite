@@ -5,7 +5,7 @@ metadata:
     app: grafana
     prometheus: prom-prometheus
   name: prometheus-grafana-nodeport
-  namespace: monitoring
+#  namespace: monitoring
 spec:
   ports:
     - name: service
@@ -25,7 +25,7 @@ metadata:
     app: prometheus
     prometheus: prom-prometheus
   name: prom-prometheus-nodeport
-  namespace: monitoring
+#  namespace: monitoring
 spec:
   ports:
     - name: web
