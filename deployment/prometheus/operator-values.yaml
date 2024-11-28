@@ -17,7 +17,6 @@ grafana:
     path: /home/hipr/grafana-data
     accessModes:
       - ReadWriteOnce
-    size: 10Gi  # Not used for hostPath but kept for compatibility
   grafana.ini:
     auth.anonymous:
       enabled: true
