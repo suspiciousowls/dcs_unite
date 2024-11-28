@@ -2,7 +2,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: grafana-pvc
-#  namespace: monitoring  # Adjust if needed
+  namespace: monitoring  # Adjust if needed
   labels:
     app: grafana
 spec:
