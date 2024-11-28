@@ -1,8 +1,3 @@
-prometheus:
-  prometheusSpec:
-    serviceMonitorSelectorNilUsesHelmValues: false
-    serviceMonitorSelector: { }
----
 fullnameOverride: prom
 
 #server:
@@ -40,6 +35,8 @@ grafana:
 
 prometheus:
   prometheusSpec:
+    serviceMonitorSelectorNilUsesHelmValues: false
+    serviceMonitorSelector: { }
     storageSpec:
       volumeMounts:
         - name: prometheus-storage
