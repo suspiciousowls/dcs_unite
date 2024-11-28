@@ -1,14 +1,14 @@
-#apiVersion: v1
-#kind: PersistentVolume
-#metadata:
-#  name: prometheus-pv
-#  labels:
-#    app: prometheus
-#spec:
-#  capacity:
-#    storage: 50Gi  # Adjust based on your storage needs
-#  accessModes:
-#    - ReadWriteOnce
-#  storageClassName: standard  # Match the storage class in PVC
-#  hostPath:
-#    path: /home/hipr/prometheus-data  # Path on the host node
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: prometheus-pv
+  labels:
+    app: prometheus
+spec:
+  capacity:
+    storage: 50Gi  # Adjust based on your storage needs
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: standard  # Match the storage class in PVC
+  hostPath:
+    path: /home/hipr/prometheus-data  # Path on the host node

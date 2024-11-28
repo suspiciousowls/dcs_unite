@@ -24,18 +24,12 @@ prometheus:
     serviceMonitorSelectorNilUsesHelmValues: false
     serviceMonitorSelector: { }
 
-    storageSpec: # This field is for PVC-based persistence; we omit it here since we're using hostPath.
-      emptyDir: { } # Placeholder to prevent dynamic PVC creation, not needed for hostPath.
-
-    extraVolumes: # Custom volumes for hostPath.
-      - name: prometheus-storage
-        hostPath:
-          path: /home/hipr/prometheus-data
-          type: DirectoryOrCreate
-
-    extraVolumeMounts: # Mount the custom volume into the container.
-      - name: prometheus-storage
-        mountPath: /prometheus
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          selector:
+            matchLabels:
+              app: prometheus
 
     podMetadata:
       labels:
