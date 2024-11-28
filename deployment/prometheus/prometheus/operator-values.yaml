@@ -35,7 +35,7 @@ prometheus:
 
     extraVolumeMounts: # Mount the custom volume into the container.
       - name: prometheus-storage
-        mountPath: /data
+        mountPath: /prometheus
 
     podMetadata:
       labels:
