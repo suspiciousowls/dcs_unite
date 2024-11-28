@@ -5,12 +5,7 @@ metadata:
 spec:
   selector:
     app: influxdb
-#  ports:
-#    - port: 8086
-#      targetPort: 8086
-#      name: http
-#  type: LoadBalancer
-  type: ClusterIP
+  type: NodePort
   ports:
     - port: 8086
 ---
