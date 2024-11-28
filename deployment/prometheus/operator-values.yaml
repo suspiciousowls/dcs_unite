@@ -8,7 +8,7 @@ fullnameOverride: prom
 server:
   persistentVolume:
     enabled: true
-    storageClass: manual
+    storageClass: standard
     accessModes:
       - ReadWriteOnce
     size: 40Gi
@@ -38,7 +38,7 @@ prometheus:
     storageSpec:
       volumeClaimTemplate:
         spec:
-          storageClassName: manual
+          storageClassName: standard
           resources:
             requests:
               storage: 64Gi
