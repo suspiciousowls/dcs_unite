@@ -1,5 +1,10 @@
 fullnameOverride: prom
 
+server:
+  persistentVolume:
+    enabled: true
+    existingClaim: prometheus-pvc
+
 grafana:
   persistence:
     enabled: true
@@ -23,11 +28,6 @@ prometheus:
   prometheusSpec:
     serviceMonitorSelectorNilUsesHelmValues: false
     serviceMonitorSelector: { }
-
-    storageSpec:
-      volumeClaimTemplate: { }  # Empty template so Helm does not create a new PVC
-    persistentVolumeClaim:
-      existingClaim: prometheus-pvc  # Specify your existing PVC here
 
     podMetadata:
       labels:
