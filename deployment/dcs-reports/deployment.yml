@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dcsreports
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dcsreports
+  template:
+    metadata:
+      labels:
+        app: dcsreports
+    spec:
+      containers:
+        - name: dcsreports
+          image: johnnydvaroyala/dcsreports:v0.1
+          ports:
+            - containerPort: 8000
+          env:
+            - name: INFLUX_DB
+              value: kafka-service:9092
+            - name: INFLUX_HOST
+              value: dcs.device.commands
+            - name: INFLUX_PORT
+              value: "8080"
+            - name: REPORT_PATH
+              value: /opt
+          volumeMounts:
+            - mountPath: /opt
+              name: dcsreports-data
+      volumes:
+        - name: dcsreports-data
+          persistentVolumeClaim:
+            claimName: dcsreports-pv-claim
