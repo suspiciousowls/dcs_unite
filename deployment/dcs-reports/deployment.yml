@@ -19,11 +19,11 @@ spec:
             - containerPort: 8000
           env:
             - name: INFLUX_DB
-              value: kafka-service:9092
+              value: dcs_metrics_db
             - name: INFLUX_HOST
-              value: dcs.device.commands
+              value: influxdb-service
             - name: INFLUX_PORT
-              value: "8080"
+              value: "8086"
             - name: REPORT_PATH
               value: /opt
           volumeMounts:
