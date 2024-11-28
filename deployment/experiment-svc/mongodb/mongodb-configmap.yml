@@ -18,6 +18,6 @@ metadata:
   name: experiment-svc-mongodb-secret
 type: Opaque
 data:
-  MONGODB_URI: bW9uZ29kYjovL3VzZXI6c2VjcmV0QGV4cGVyaW1lbnQtc3ZjLW1vbmdvZGI6MjcwMTcvZXhwZXJpbWVudHM=
+  MONGODB_URI: bW9uZ29kYjovL3VzZXI6c2VjcmV0QGV4cGVyaW1lbnQtc3ZjLW1vbmdvZGI6MjcwMTcvZXhwZXJpbWVudHM/YXV0aFNvdXJjZT1hZG1pbg==
   MONGODB_ROOT_USERNAME: dXNlcg==
   MONGODB_ROOT_PASSWORD: c2VjcmV0 # This is the base64-encoded password
