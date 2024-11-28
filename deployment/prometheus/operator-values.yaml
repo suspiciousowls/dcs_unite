@@ -1,15 +1,5 @@
 fullnameOverride: prom
 
-#server:
-#  persistentVolume:
-#    enabled: true
-#    storageClass: standard
-#    accessModes:
-#      - ReadWriteOnce
-#    size: 40Gi
-#  statefulSet:
-#    enabled: true
-
 grafana:
   persistence:
     enabled: true
