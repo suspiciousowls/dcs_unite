@@ -36,8 +36,10 @@ prometheus:
   prometheusSpec:
     serviceMonitorSelectorNilUsesHelmValues: false
     serviceMonitorSelector: { }
-    storageSpec: # This field is for PVC-based persistence; we omit it here since we're using hostPath.
-      emptyDir: { } # Placeholder to prevent dynamic PVC creation, not needed for hostPath.
+
+    # Remove storageSpec if you're not using PVC.
+    storageSpec:
+      emptyDir: { } # Retains in-memory storage fallback if extraVolumes is missed.
 
     extraVolumes: # Custom volumes for hostPath.
       - name: prometheus-storage
