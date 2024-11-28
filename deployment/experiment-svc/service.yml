@@ -4,7 +4,7 @@ metadata:
   name: experiment-svc-service
 spec:
   selector:
-    app: experiment-svc
+    app: experiment-service
   ports:
     - protocol: TCP
       port: 8080
@@ -33,8 +33,8 @@ spec:
     - host: hipr.k8s
       http:
         paths:
-          - path: /experiments(/|$)(.*)
-            pathType: ImplementationSpecific
+          - path: /experiments
+            pathType: Prefix
             backend:
               service:
                 name: experiment-svc-service
