@@ -4,7 +4,7 @@ metadata:
   name: experiment-svc-service
 spec:
   selector:
-    app: experiment-service
+    app: experiment-svc
   ports:
     - protocol: TCP
       port: 8080
@@ -37,6 +37,6 @@ spec:
             pathType: ImplementationSpecific
             backend:
               service:
-                name: experiment-service
+                name: experiment-svc-service
                 port:
                   number: 8080
