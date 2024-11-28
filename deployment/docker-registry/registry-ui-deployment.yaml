@@ -17,7 +17,7 @@ spec:
             - name: REGISTRY_TITLE
               value: My Private Docker Registry
             - name: NGINX_PROXY_PASS_URL
-              value: https://registry:5000
+              value: http://registry:5000
             - name: SINGLE_REGISTRY
               value: 'true'
           image: joxit/docker-registry-ui:latest
@@ -30,14 +30,14 @@ kind: Ingress
 metadata:
   name: registry-ui-ingress
   annotations:
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+#    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/proxy-body-size: "1000m"
 spec:
   ingressClassName: nginx
-  tls:
-    - hosts:
-        - registry.hipr.k8s.ru
-      secretName: registry-tls
+#  tls:
+#    - hosts:
+#        - registry.hipr.k8s.ru
+#      secretName: registry-tls
   rules:
     - host: registry.hipr.k8s.ru
       http:
