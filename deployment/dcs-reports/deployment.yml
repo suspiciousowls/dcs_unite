@@ -20,7 +20,7 @@ spec:
           env:
             - name: INFLUX_DB
               value: dcs_metrics_db
-            - name: INFLUX_HOST
+            - name: INLUX_HOST
               value: influxdb-service
             - name: INFLUX_PORT
               value: "8086"
