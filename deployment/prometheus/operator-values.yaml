@@ -48,14 +48,6 @@ prometheus:
         - name: prometheus-storage
           hostPath:
             path: /home/hipr/prometheus-data
-      volumeClaimTemplate:
-        spec:
-          storageClassName: standard
-          accessModes:
-            - ReadWriteOnce
-          resources:
-            requests:
-              storage: 64Gi
     podMetadata:
       labels:
         app: prometheus
