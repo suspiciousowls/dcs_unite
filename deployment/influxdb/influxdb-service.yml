@@ -37,13 +37,57 @@ metadata:
 spec:
   selector:
     app: influxdb
-  #  type: NodePort
-  #  ports:
-  #    - port: 8888
+  type: NodePort
   ports:
-    - protocol: TCP
-      port: 8888
-      targetPort: 8888
-  type: LoadBalancer
-  externalIPs:
-    - 192.168.127.20
+    - port: 8888
+#  ports:
+#    - protocol: TCP
+#      port: 8888
+#      targetPort: 8888
+#  type: LoadBalancer
+#  externalIPs:
+#    - 192.168.127.20
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: chronograf-ingress
+  annotations:
+    #    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      more_set_headers "X-Frame-Options: same-origin";
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: chronograf.hipr.k8s
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: chronograf-service
+                port:
+                  number: 8888
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: influxdb-ingress
+  annotations:
+    #    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      more_set_headers "X-Frame-Options: same-origin";
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: influxdb.hipr.k8s
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: influxdb-service
+                port:
+                  number: 8086
