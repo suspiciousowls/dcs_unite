@@ -2,14 +2,6 @@ prometheus:
   prometheusSpec:
     serviceMonitorSelectorNilUsesHelmValues: false
     serviceMonitorSelector: { }
-    storageSpec:
-      volumeMounts:
-        - name: prometheus-storage
-          mountPath: /data
-      volumes:
-        - name: prometheus-storage
-          hostPath:
-            path: /home/hipr/prometheus-data
 ---
 fullnameOverride: prom
 
@@ -49,6 +41,13 @@ grafana:
 prometheus:
   prometheusSpec:
     storageSpec:
+      volumeMounts:
+        - name: prometheus-storage
+          mountPath: /data
+      volumes:
+        - name: prometheus-storage
+          hostPath:
+            path: /home/hipr/prometheus-data
       volumeClaimTemplate:
         spec:
           storageClassName: standard
