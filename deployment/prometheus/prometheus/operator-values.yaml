@@ -25,11 +25,9 @@ prometheus:
     serviceMonitorSelector: { }
 
     storageSpec:
-      volumeClaimTemplate:
-        spec:
-          selector:
-            matchLabels:
-              app: prometheus
+      volumeClaimTemplate: { }
+      # If you're using an existing PVC, specify it below
+      existingClaim: prometheus-pvc  # The name of your pre-created PVC
 
     podMetadata:
       labels:
