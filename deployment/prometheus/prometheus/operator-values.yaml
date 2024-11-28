@@ -25,11 +25,13 @@ prometheus:
     serviceMonitorSelector: { }
 
     storageSpec:
-      volumeClaimTemplate:
-        spec:
-          selector:
-            matchLabels:
-              app: prometheus
+      volumeMounts:
+        - name: prometheus-storage
+          mountPath: /data
+      volumes:
+        - name: prometheus-storage
+          hostPath:
+            path: /home/hipr/prometheus-data
 
     podMetadata:
       labels:
