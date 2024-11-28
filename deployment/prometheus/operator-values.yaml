@@ -3,10 +3,7 @@ fullnameOverride: prom
 grafana:
   persistence:
     enabled: true
-    type: hostPath
-    path: /home/hipr/grafana-data
-    accessModes:
-      - ReadWriteOnce
+    existingClaim: grafana-pvc
   grafana.ini:
     auth.anonymous:
       enabled: true
@@ -27,19 +24,14 @@ prometheus:
     serviceMonitorSelectorNilUsesHelmValues: false
     serviceMonitorSelector: { }
 
-    # Remove storageSpec if you're not using PVC.
-    storageSpec:
-      emptyDir: { } # Retains in-memory storage fallback if extraVolumes is missed.
+    prometheusSpec:
+      storageSpec:
+        volumeClaimTemplate:
+          spec:
+            selector:
+              matchLabels:
+                app: prometheus
 
-    extraVolumes: # Custom volumes for hostPath.
-      - name: prometheus-storage
-        hostPath:
-          path: /home/hipr/prometheus-data
-          type: DirectoryOrCreate
-
-    extraVolumeMounts: # Mount the custom volume into the container.
-      - name: prometheus-storage
-        mountPath: /data
 
     podMetadata:
       labels:
