@@ -14,7 +14,6 @@ spec:
       labels:
         app: experiment-service
     spec:
-      hostNetwork: true
       containers:
         - name: experiment-service
           image: snaiperlfc/experiment-service:0.0.3-SNAPSHOT
