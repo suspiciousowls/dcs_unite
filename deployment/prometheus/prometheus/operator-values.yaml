@@ -24,14 +24,12 @@ prometheus:
     serviceMonitorSelectorNilUsesHelmValues: false
     serviceMonitorSelector: { }
 
-    prometheusSpec:
-      storageSpec:
-        volumeClaimTemplate:
-          spec:
-            selector:
-              matchLabels:
-                app: prometheus
-
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          selector:
+            matchLabels:
+              app: prometheus
 
     podMetadata:
       labels:
