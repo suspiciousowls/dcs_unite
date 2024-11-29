@@ -14,14 +14,18 @@ spec:
     spec:
       containers:
         - name: dcsreports
-          image: johnnydvaroyala/dcsreports:v0.1
+          image: johnnydvaroyala/dcsreports:v0.3
           ports:
             - containerPort: 8000
           env:
             - name: INFLUX_DB
               value: dcs_metrics_db
-            - name: INLUX_HOST
+            - name: INFLUX_HOST
               value: influxdb-service
+            - name: INFLUXDB_USER
+              value: user
+            - name: INFLUXDB_USER_PASSWORD
+              value: secretpassword
             - name: INFLUX_PORT
               value: "8086"
             - name: REPORT_PATH
