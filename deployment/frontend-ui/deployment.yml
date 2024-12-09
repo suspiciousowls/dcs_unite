@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: dcs-front-ui
-          image: snaiperlfc/dcs-control:0.8.56
+          image: pachkahleba/dcs_web_client:0.8.56
           imagePullPolicy: Always
           ports:
             - containerPort: 80
