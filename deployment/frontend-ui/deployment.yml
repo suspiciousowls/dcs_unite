@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: dcs-front-ui
-          image: pachkahleba/dcs-control:0.8.75
+          image: pachkahleba/dcs-control:0.8.78
           imagePullPolicy: Always
           ports:
             - containerPort: 80
