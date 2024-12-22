@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: dcsreports
-          image: johnnydvaroyala/dcsreports:v0.12
+          image: johnnydvaroyala/dcsreports:v0.13
           ports:
             - containerPort: 8000
           env:
