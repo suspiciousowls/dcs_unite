@@ -35,7 +35,7 @@ spec:
             - name: TFNODE
               value: http://dcs-nodes-service:8000
             - name: EX
-              value: http://experiment-service:8080
+              value: http://experiment-svc-service:8080
           volumeMounts:
             - mountPath: /opt
               name: dcsreports-data
