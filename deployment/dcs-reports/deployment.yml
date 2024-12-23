@@ -33,9 +33,9 @@ spec:
             - name: REPORT_PATH
               value: /opt
             - name: TFNODE
-              value: dcs-nodes-service:8000
+              value: http://dcs-nodes-service:8000
             - name: EX
-              value: experiment-service:8080
+              value: http://experiment-service:8080
           volumeMounts:
             - mountPath: /opt
               name: dcsreports-data
