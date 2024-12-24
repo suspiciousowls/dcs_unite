@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: experiment-service
-          image: snaiperlfc/experiment-service:0.0.8-SNAPSHOT
+          image: snaiperlfc/experiment-service:0.0.9-SNAPSHOT
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
