@@ -21,8 +21,8 @@ spec:
           ports:
             - containerPort: 8080
           env:
-            - name: TZ
-              value: "Europe/Moscow" # Укажите нужный вам часовой пояс
+#            - name: TZ
+#              value: "Europe/Moscow" # Укажите нужный вам часовой пояс
             - name: SPRING_DATA_MONGODB_URI
               valueFrom:
                 secretKeyRef:
