@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-red
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node-red
+  template:
+    metadata:
+      labels:
+        app: node-red
+    spec:
+      containers:
+        - name: node-red
+          image: nodered/node-red:latest
+          ports:
+            - containerPort: 1880
+          volumeMounts:
+            - mountPath: /data
+              name: nodered-data
+      volumes:
+        - name: nodered-data
+          persistentVolumeClaim:
+            claimName: nodered-pvc
