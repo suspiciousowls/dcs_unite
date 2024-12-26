@@ -20,6 +20,9 @@ spec:
           volumeMounts:
             - mountPath: /data
               name: nodered-data
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
       volumes:
         - name: nodered-data
           persistentVolumeClaim:
