@@ -1,3 +1,11 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mosquitto-passwords-secret
+type: Opaque
+data:
+  passwords.txt: dXNlcjE6cGFzc3dvcmQx
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -32,3 +40,6 @@ spec:
         - name: mosquitto-config
           configMap:
             name: mosquitto-config
+        - name: mosquitto-passwords
+          secret:
+            secretName: mosquitto-passwords-secret
