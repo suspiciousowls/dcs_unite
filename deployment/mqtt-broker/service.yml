@@ -10,3 +10,5 @@ spec:
       port: 1883
       targetPort: 1883
   type: LoadBalancer
+  externalIPs:
+    - 192.168.127.20
