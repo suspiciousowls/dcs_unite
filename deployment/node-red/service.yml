@@ -7,7 +7,7 @@ spec:
     app: node-red
   ports:
     - protocol: TCP
-      port: 1880
+      port: 2880
       targetPort: 1880
   type: ClusterIP
 ---
@@ -36,4 +36,4 @@ spec:
               service:
                 name: node-red-service
                 port:
-                  number: 1880
+                  number: 2880
