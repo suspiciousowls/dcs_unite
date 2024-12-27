@@ -30,7 +30,7 @@ spec:
               mountPath: /mosquitto/data
             - name: mosquitto-config
               mountPath: /mosquitto/config
-            - name: mosquitto-passwords
+            - name: mosquitto-passwords-file
               mountPath: /mosquitto/config/passwords.txt
               subPath: passwords.txt
       volumes:
@@ -40,6 +40,6 @@ spec:
         - name: mosquitto-config
           configMap:
             name: mosquitto-config
-        - name: mosquitto-passwords
+        - name: mosquitto-passwords-file
           secret:
             secretName: mosquitto-passwords-secret
