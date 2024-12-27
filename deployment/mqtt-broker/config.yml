@@ -4,7 +4,6 @@ metadata:
   name: mosquitto-config
 data:
   mosquitto.conf: |
-    pid file /var/run/mosquitto/mosquitto.pid
     user mosquitto
     listener 1883
     allow_anonymous false
