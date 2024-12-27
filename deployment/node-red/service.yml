@@ -10,6 +10,8 @@ spec:
       port: 1881
       targetPort: 1880
   type: LoadBalancer
+  externalIPs:
+    - 192.168.127.20
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
