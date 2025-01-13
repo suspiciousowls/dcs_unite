@@ -1,0 +1,45 @@
+#apiVersion: v1
+#kind: Secret
+#metadata:
+#  name: mosquitto-passwords-secret
+#type: Opaque
+#data:
+#  passwords.txt: dXNlcjE6cGFzc3dvcmQx
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mosquitto
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mosquitto
+  template:
+    metadata:
+      labels:
+        app: mosquitto
+    spec:
+      containers:
+        - name: mosquitto
+          image: eclipse-mosquitto:latest
+          ports:
+            - containerPort: 1883
+          volumeMounts:
+            - name: mosquitto-data
+              mountPath: /mosquitto/data
+            - name: mosquitto-config
+              mountPath: /mosquitto/config
+#            - name: mosquitto-passwords-file
+#              mountPath: /mosquitto/config/passwords.txt
+#              subPath: passwords.txt
+      volumes:
+        - name: mosquitto-data
+          persistentVolumeClaim:
+            claimName: mosquitto-pvc
+        - name: mosquitto-config
+          configMap:
+            name: mosquitto-config
+#        - name: mosquitto-passwords-file
+#          secret:
+#            secretName: mosquitto-passwords-secret

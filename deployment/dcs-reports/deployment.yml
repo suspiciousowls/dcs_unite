@@ -14,12 +14,12 @@ spec:
     spec:
       containers:
         - name: dcsreports
-          image: johnnydvaroyala/dcsreports:v0.10
+          image: johnnydvaroyala/dcsreports:v0.16
           ports:
             - containerPort: 8000
           env:
-            - name: TZ
-              value: "Europe/Moscow" # Укажите нужный вам часовой пояс
+#            - name: TZ
+#              value: "Europe/Moscow" # Укажите нужный вам часовой пояс
             - name: INFLUX_DB
               value: dcs_metrics_db
             - name: INFLUX_HOST
@@ -32,6 +32,10 @@ spec:
               value: "8086"
             - name: REPORT_PATH
               value: /opt
+            - name: TFNODE
+              value: http://dcs-nodes-service:8000
+            - name: EX
+              value: http://experiment-svc-service:8080
           volumeMounts:
             - mountPath: /opt
               name: dcsreports-data
