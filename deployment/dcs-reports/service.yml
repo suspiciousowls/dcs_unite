@@ -9,7 +9,10 @@ spec:
     - protocol: TCP
       port: 9890
       targetPort: 8000
-  type: ClusterIP
+#  type: ClusterIP
+  type: LoadBalancer # важно не менять
+  externalIPs:
+    - 192.168.127.20
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -23,9 +26,9 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-keepalive-requests: "100"
     nginx.ingress.kubernetes.io/proxy-keepalive-timeout: "120s"
 
-    nginx.ingress.kubernetes.io/proxy-read-timeout: "300"
-    nginx.ingress.kubernetes.io/proxy-send-timeout: "300"
-    nginx.ingress.kubernetes.io/proxy-connect-timeout: "60"
+#    nginx.ingress.kubernetes.io/proxy-read-timeout: "300"
+#    nginx.ingress.kubernetes.io/proxy-send-timeout: "300"
+#    nginx.ingress.kubernetes.io/proxy-connect-timeout: "60"
 
     nginx.ingress.kubernetes.io/use-regex: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /$2
