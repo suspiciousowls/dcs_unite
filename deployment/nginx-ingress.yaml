@@ -4,11 +4,11 @@ controller:
   reportNodeInternalIp: true
 
 
-  hostPort:
-    enabled: true
-    ports:
-      http: 80
-      https: 443
+#  hostPort:
+#    enabled: true
+#    ports:
+#      http: 80
+#      https: 443
 
   publishService:
     # -- Enable 'publishService' or not
