@@ -7,8 +7,8 @@ controller:
   hostPort:
     enabled: true
     ports:
-      http: 80
-      https: 8443
+      http: 81
+      https: 443
 
   publishService:
     # -- Enable 'publishService' or not
