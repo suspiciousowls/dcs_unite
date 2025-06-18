@@ -15,7 +15,7 @@ spec:
       port: 9029
       targetPort: 9029
       protocol: UDP
-    - name: device-response-receiver-udp
+    - name: flowrelay-udp
       port: 9031
       targetPort: 9031
       protocol: UDP
