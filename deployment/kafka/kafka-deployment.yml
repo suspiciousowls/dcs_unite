@@ -65,7 +65,7 @@ metadata:
   labels:
     app: kafka
 spec:
-  storageClassName: standard
+  storageClassName: manual
   capacity:
     storage: 10Gi
   accessModes:
