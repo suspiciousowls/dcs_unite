@@ -16,7 +16,7 @@ grafana:
       org_role: Viewer
     users:
       allow_sign_up: false
-  adminPassword: admin
+  adminPassword: prom-operator
   podLabels:
     app: grafana
   sidecar:

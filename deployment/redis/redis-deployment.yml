@@ -25,17 +25,7 @@ spec:
           persistentVolumeClaim:
             claimName: redis-pvc
 ---
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: redis-pvc
-spec:
-  storageClassName: standard
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 5Gi
+
 ---
 apiVersion: v1
 kind: PersistentVolume
