@@ -1,19 +1,6 @@
 controller:
   kind: DaemonSet
 
-  reportNodeInternalIp: true
-
-
-  hostPort:
-    enabled: true
-    ports:
-      http: 81
-      https: 443
-
-  publishService:
-    # -- Enable 'publishService' or not
-    enabled: true
-
   service:
     type: LoadBalancer
     externalIPs:
@@ -23,9 +10,3 @@ controller:
     enabled: true
     serviceMonitor:
       enabled: true
-
-  allowSnippetAnnotations: true
-
-  #udp:
-    # -- Allows customization of the udp-services-configmap; defaults to $(POD_NAMESPACE)
-    #configMapNamespace: "ingress-nginx/udp-services"
