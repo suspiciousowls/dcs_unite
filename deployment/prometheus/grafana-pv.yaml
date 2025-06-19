@@ -9,6 +9,6 @@ spec:
     storage: 10Gi  # Adjust based on your storage needs
   accessModes:
     - ReadWriteOnce
-  storageClassName: standard  # Match the storage class in PVC
+  storageClassName: manual  # Match the storage class in PVC
   hostPath:
     path: /home/hipr/grafana-data  # Path on the host node
