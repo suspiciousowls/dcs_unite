@@ -72,4 +72,4 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/home/hipr/kafka-data"
+    path: /home/hipr/kafka-data
