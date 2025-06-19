@@ -7,7 +7,7 @@ controller:
   hostPort:
     enabled: true
     ports:
-      http: 81
+      http: 80
       https: 443
 
   publishService:
