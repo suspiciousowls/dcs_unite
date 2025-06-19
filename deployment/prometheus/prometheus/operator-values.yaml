@@ -6,6 +6,8 @@ server:
     existingClaim: prometheus-pvc
 
 grafana:
+  initChownData:
+    enabled: false
   persistence:
     enabled: true
     existingClaim: grafana-pvc
