@@ -24,19 +24,3 @@ spec:
         - name: redis-data
           persistentVolumeClaim:
             claimName: redis-pvc
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: redis-pv-volume
-  labels:
-    type: local
-    app: redis
-spec:
-  storageClassName: standard
-  capacity:
-    storage: 10Gi
-  accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: "/home/hipr/redis-data"
