@@ -22,9 +22,9 @@ spec:
   externalIPs:
     - 192.168.127.20
   ports:
-    - name: https
-      port: 8443        # внешний порт
-      targetPort: 8443  # внутренний порт контейнера Keycloak
+    - name: http
+      port: 18080        # внешний порт
+      targetPort: 18080  # внутренний порт контейнера Keycloak
   selector:
     app: keycloak
 #  externalIPs:
