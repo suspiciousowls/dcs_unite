@@ -12,7 +12,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/mnt/cephfs/keycloak-postgres"
+    path: "/home/hipr/cephfs/keycloak-postgres"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim

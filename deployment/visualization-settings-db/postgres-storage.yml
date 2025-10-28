@@ -13,7 +13,7 @@ spec:
   accessModes:
     - ReadWriteMany
   hostPath:
-    path: "/mnt/cephfs/postgres-data-visualization-settings-db"
+    path: "/home/hipr/cephfs/postgres-data-visualization-settings-db"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim

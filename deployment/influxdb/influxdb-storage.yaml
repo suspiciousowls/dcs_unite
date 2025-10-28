@@ -13,7 +13,7 @@ spec:
   accessModes:
     - ReadWriteMany
   hostPath:
-    path: "/mnt/cephfs/influxdb-data"
+    path: "/home/hipr/cephfs/influxdb-data"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -43,7 +43,7 @@ spec:
   accessModes:
     - ReadWriteMany
   hostPath:
-    path: "/mnt/cephfs/kapacitor-data"
+    path: "/home/hipr/cephfs/kapacitor-data"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -73,7 +73,7 @@ spec:
   accessModes:
     - ReadWriteMany
   hostPath:
-    path: "/mnt/cephfs/chronograf-data"
+    path: "/home/hipr/cephfs/chronograf-data"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
