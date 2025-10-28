@@ -1,25 +1,25 @@
-#apiVersion: networking.k8s.io/v1
-#kind: Ingress
-#metadata:
-#  name: keycloak-ingress
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: keycloak-ingress
 #  annotations:
 #    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 #    nginx.ingress.kubernetes.io/secure-backends: "true"
 #    nginx.ingress.kubernetes.io/ssl-redirect: "true"
-#spec:
-#  ingressClassName: nginx
+spec:
+  ingressClassName: nginx
 #  tls:
 #    - hosts:
 #        - keycloak.hipr.k8s
 #      secretName: keycloak-tls
-#  rules:
-#    - host: keycloak.hipr.k8s
-#      http:
-#        paths:
-#          - path: /
-#            pathType: Prefix
-#            backend:
-#              service:
-#                name: keycloak
-#                port:
-#                  number: 8443
+  rules:
+    - host: keycloak.hipr.k8s
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: keycloak
+                port:
+                  number: 18080
