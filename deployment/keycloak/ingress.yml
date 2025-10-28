@@ -5,7 +5,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: keycloak.k8s-hipr.nip.io
+    - host: keycloak.hipr.k8s
       http:
         paths:
           - path: /
@@ -14,4 +14,4 @@ spec:
               service:
                 name: keycloak
                 port:
-                  number: 8080
+                  number: 18080
