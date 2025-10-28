@@ -61,10 +61,12 @@ spec:
               value: "keycloak.hipr.k8s"
             - name: KEYCLOAK_FRONTEND_URL
               value: "https://keycloak.hipr.k8s/auth"
-#            - name: KEYCLOAK_HTTP_PORT
-#              value: "8080"
+            #            - name: KEYCLOAK_HTTP_PORT
+            #              value: "8080"
+            - name: KEYCLOAK_HTTPS_PORT
+              value: "8443"
             - name: KEYCLOAK_HTTP_ENABLED
-              value: "true"
+              value: "false"
             - name: KEYCLOAK_HTTP_RELATIVE_PATH
               value: "/auth"
             - name: KEYCLOAK_DATABASE_HOST
@@ -82,18 +84,28 @@ spec:
             - name: KEYCLOAK_HEAP_SIZE
               value: "1G"
           ports:
-            - containerPort: 8080
-              name: http
+            - containerPort: 8443
+              name: https
+          volumeMounts:
+            - name: tls-secret
+              mountPath: /opt/bitnami/keycloak/certs
+              readOnly: true
           readinessProbe:
             httpGet:
               path: '/auth/realms/master'
-              port: 8080
+              port: 8443
+              scheme: HTTPS
             initialDelaySeconds: 90
             timeoutSeconds: 5
           livenessProbe:
             httpGet:
               path: '/auth/realms/master'
-              port: 8080
+              port: 8443
+              scheme: HTTPS
             initialDelaySeconds: 90
             periodSeconds: 15
             timeoutSeconds: 5
+      volumes:
+        - name: tls-secret
+          secret:
+            secretName: keycloak-tls
