@@ -60,7 +60,7 @@ spec:
             - name: KEYCLOAK_HTTP_RELATIVE_PATH
               value: "/auth"
             - name: KEYCLOAK_DATABASE_HOST
-              value: "postgres"
+              value: "keycloak-postgres"
             - name: KEYCLOAK_DATABASE_PASSWORD
               value: "#3]O?4RGj)DE7Z!9SA5"
             - name: KEYCLOAK_ADMIN_USER
