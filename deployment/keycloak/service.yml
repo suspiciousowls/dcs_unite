@@ -21,7 +21,7 @@ spec:
   type: NodePort
   ports:
     - name: http
-      port: 18080
+      port: 8080
   selector:
     app: keycloak
 #  externalIPs:

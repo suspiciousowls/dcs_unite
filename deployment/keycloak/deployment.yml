@@ -74,7 +74,7 @@ spec:
             - name: KEYCLOAK_HEAP_SIZE
               value: "1G"
           ports:
-            - containerPort: 18080
+            - containerPort: 8080
               name: http
           readinessProbe:
             httpGet:
