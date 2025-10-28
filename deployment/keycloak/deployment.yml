@@ -79,13 +79,13 @@ spec:
           readinessProbe:
             httpGet:
               path: '/auth/realms/master'
-              port: 18080
+              port: 8080
             initialDelaySeconds: 90
             timeoutSeconds: 5
           livenessProbe:
             httpGet:
               path: '/auth/realms/master'
-              port: 18080
+              port: 8080
             initialDelaySeconds: 90
             periodSeconds: 15
             timeoutSeconds: 5
