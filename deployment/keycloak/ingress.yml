@@ -9,6 +9,7 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-set-headers: |
       X-Forwarded-Proto $scheme
       X-Forwarded-Host $host
+      X-Forwarded-Port $server_port
 spec:
   ingressClassName: nginx
   rules:
