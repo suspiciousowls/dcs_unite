@@ -8,10 +8,10 @@ metadata:
 #    nginx.ingress.kubernetes.io/ssl-redirect: "true"
 spec:
   ingressClassName: nginx
-#  tls:
-#    - hosts:
-#        - keycloak.hipr.k8s
-#      secretName: keycloak-tls
+  tls:
+    - hosts:
+        - keycloak.hipr.k8s
+      secretName: keycloak-tls
   rules:
     - host: keycloak.hipr.k8s
       http:
@@ -22,4 +22,4 @@ spec:
               service:
                 name: keycloak
                 port:
-                  number: 18080
+                  number: 80
