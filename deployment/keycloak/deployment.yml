@@ -61,10 +61,10 @@ spec:
               value: "keycloak.hipr.k8s"
             - name: KEYCLOAK_FRONTEND_URL
               value: "https://keycloak.hipr.k8s/auth"
-            - name: KEYCLOAK_HTTP_PORT
-              value: "8080"
-#            - name: KEYCLOAK_HTTP_ENABLED
-#              value: "true"
+#            - name: KEYCLOAK_HTTP_PORT
+#              value: "8080"
+            - name: KEYCLOAK_HTTP_ENABLED
+              value: "true"
             - name: KEYCLOAK_HTTP_RELATIVE_PATH
               value: "/auth"
             - name: KEYCLOAK_DATABASE_HOST
@@ -74,7 +74,7 @@ spec:
             - name: KEYCLOAK_ADMIN_USER
               value: "admin"
             - name: KEYCLOAK_ADMIN_PASSWORD
-              value: "Y5q-MUV-6zt-dDg"
+              value: "Y5q-MUV-6zt-dDe"
             - name: JAVA_OPTS
               value: "-XX:+UseZGC -XX:MaxRAMPercentage=75.0"
             - name: KEYCLOAK_PRODUCTION
@@ -84,8 +84,6 @@ spec:
           ports:
             - containerPort: 8080
               name: http
-            - containerPort: 8443
-              name: https
           readinessProbe:
             httpGet:
               path: '/auth/realms/master'

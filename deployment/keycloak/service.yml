@@ -20,10 +20,8 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - port: 18080
+    - port: 80
       targetPort: 8080
-    - port: 8443
-      targetPort: 8443
   selector:
     app: keycloak
 #  externalIPs:
