@@ -14,12 +14,16 @@ spec:
     spec:
       containers:
         - name: postgres
-          image: postgres:13-alpine
+          image: postgres:14.5-alpine
           env:
-            - name: POSTGRES_PASSWORD
-              value: mysecretpassword
             - name: POSTGRES_DB
-              value: keycloak
+              value: bitnami_keycloak
+            - name: POSTGRES_USER
+              value: bn_keycloak
+            - name: POSTGRES_PASSWORD
+              value: "#3]O?4RGj)DE7Z!9SA5"
+            - name: POSTGRES_LOGGING_COLLECTOR
+              value: "off"
           ports:
             - containerPort: 5432
               name: postgres
