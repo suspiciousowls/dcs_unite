@@ -49,22 +49,26 @@ spec:
     spec:
       containers:
         - name: keycloak
-          image: jboss/keycloak:latest
+          image: bitnamilegacy/keycloak:24.0.5
           env:
-            - name: DB_VENDOR
-              value: POSTGRES
-            - name: DB_ADDR
-              value: keycloak-postgres
-            - name: DB_DATABASE
-              value: keycloak
-            - name: DB_USER
-              value: postgres
-            - name: DB_PASSWORD
-              value: mysecretpassword
-            - name: KEYCLOAK_USER
-              value: admin
-            - name: KEYCLOAK_PASSWORD
-              value: secret
+            - name: KEYCLOAK_HTTP_PORT
+              value: "18080"
+            - name: KEYCLOAK_HTTP_RELATIVE_PATH
+              value: "/auth"
+            - name: KEYCLOAK_DATABASE_HOST
+              value: "postgres"
+            - name: KEYCLOAK_DATABASE_PASSWORD
+              value: "#3]O?4RGj)DE7Z!9SA5"
+            - name: KEYCLOAK_ADMIN_USER
+              value: "admin"
+            - name: KEYCLOAK_ADMIN_PASSWORD
+              value: "Y5q-MUV-6zt-dDg"
+            - name: JAVA_OPTS
+              value: "-XX:+UseZGC -XX:MaxRAMPercentage=75.0"
+            - name: KEYCLOAK_PRODUCTION
+              value: "true"
+            - name: KEYCLOAK_HEAP_SIZE
+              value: "1G"
           ports:
             - containerPort: 8080
               name: http
