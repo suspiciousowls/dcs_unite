@@ -57,8 +57,8 @@ spec:
           env:
             - name: KEYCLOAK_HOSTNAME
               value: "keycloak.hipr.k8s"
-            - name: KEYCLOAK_FRONTEND_URL
-              value: "https://keycloak.hipr.k8s/auth"
+#            - name: KEYCLOAK_FRONTEND_URL
+#              value: "https://keycloak.hipr.k8s/auth"
             - name: KEYCLOAK_HTTP_PORT
               value: "18080"
             - name: KEYCLOAK_HTTP_RELATIVE_PATH
