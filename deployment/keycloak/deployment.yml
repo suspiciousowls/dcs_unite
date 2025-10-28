@@ -74,8 +74,8 @@ spec:
             - name: KEYCLOAK_HEAP_SIZE
               value: "1G"
           ports:
-            - containerPort: 8443
-              name: https
+            - containerPort: 18080
+              name: http
           volumeMounts:
             - name: tls-secret
               mountPath: /opt/bitnami/keycloak/certs
