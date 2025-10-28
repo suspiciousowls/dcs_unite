@@ -18,9 +18,9 @@ metadata:
   labels:
     app: keycloak
 spec:
-  type: LoadBalancer
-  externalIPs:
-    - 192.168.127.20
+  type: ClusterIP
+#  externalIPs:
+#    - 192.168.127.20
   ports:
     - name: http
       port: 18080        # внешний порт
