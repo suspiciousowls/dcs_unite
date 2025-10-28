@@ -56,7 +56,7 @@ spec:
           image: bitnamilegacy/keycloak:24.0.5
           env:
             - name: KEYCLOAK_HTTP_PORT
-              value: "8080"
+              value: "18080"
             - name: KEYCLOAK_HTTP_RELATIVE_PATH
               value: "/auth"
             - name: KEYCLOAK_DATABASE_HOST
@@ -74,18 +74,18 @@ spec:
             - name: KEYCLOAK_HEAP_SIZE
               value: "1G"
           ports:
-            - containerPort: 8080
+            - containerPort: 18080
               name: http
           readinessProbe:
             httpGet:
               path: '/auth/realms/master'
-              port: 8080
+              port: 18080
             initialDelaySeconds: 90
             timeoutSeconds: 5
           livenessProbe:
             httpGet:
               path: '/auth/realms/master'
-              port: 8080
+              port: 18080
             initialDelaySeconds: 90
             periodSeconds: 15
             timeoutSeconds: 5
