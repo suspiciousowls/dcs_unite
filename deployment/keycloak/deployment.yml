@@ -55,12 +55,6 @@ spec:
         - name: keycloak
           image: bitnamilegacy/keycloak:24.0.5
           env:
-            - name: KEYCLOAK_PROXY
-              value: "edge"
-            - name: KC_PROXY
-              value: "edge"
-#            - name: KEYCLOAK_HTTP_ENABLED
-#              value: "true"
             - name: KEYCLOAK_HTTP_PORT
               value: "18080"
             - name: KEYCLOAK_HTTP_RELATIVE_PATH
@@ -72,11 +66,11 @@ spec:
             - name: KEYCLOAK_ADMIN_USER
               value: "admin"
             - name: KEYCLOAK_ADMIN_PASSWORD
-              value: "Y5q-MUV-6zt-dDg"
+              value: "Y5q-MUV-6zt-dDe"
             - name: JAVA_OPTS
               value: "-XX:+UseZGC -XX:MaxRAMPercentage=75.0"
-#            - name: KEYCLOAK_PRODUCTION
-#              value: "true"
+            - name: KEYCLOAK_PRODUCTION
+              value: "true"
             - name: KEYCLOAK_HEAP_SIZE
               value: "1G"
           ports:
@@ -84,10 +78,10 @@ spec:
               name: http
 #            - containerPort: 8443
 #              name: https
-          volumeMounts:
-            - name: tls-secret
-              mountPath: /opt/bitnami/keycloak/certs
-              readOnly: true
+#          volumeMounts:
+#            - name: tls-secret
+#              mountPath: /opt/bitnami/keycloak/certs
+#              readOnly: true
           readinessProbe:
             httpGet:
               path: '/auth/realms/master'
@@ -101,7 +95,7 @@ spec:
             initialDelaySeconds: 90
             periodSeconds: 15
             timeoutSeconds: 5
-      volumes:
-        - name: tls-secret
-          secret:
-            secretName: keycloak-tls
+#      volumes:
+#        - name: tls-secret
+#          secret:
+#            secretName: keycloak-tls
