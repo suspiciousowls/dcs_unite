@@ -55,8 +55,8 @@ spec:
         - name: keycloak
           image: bitnamilegacy/keycloak:24.0.5
           env:
-            - name: KEYCLOAK_PROXY
-              value: "edge"
+#            - name: KEYCLOAK_PROXY
+#              value: "edge"
 #            - name: KEYCLOAK_HTTP_ENABLED
 #              value: "true"
             - name: KEYCLOAK_HTTP_PORT
@@ -80,6 +80,8 @@ spec:
           ports:
             - containerPort: 18080
               name: http
+            - containerPort: 8443
+              name: https
           volumeMounts:
             - name: tls-secret
               mountPath: /opt/bitnami/keycloak/certs
