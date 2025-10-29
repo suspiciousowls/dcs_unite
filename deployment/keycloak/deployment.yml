@@ -73,8 +73,8 @@ spec:
               value: "Y5q-MUV-6zt-dDe"
             - name: JAVA_OPTS
               value: "-XX:+UseZGC -XX:MaxRAMPercentage=75.0"
-            - name: KEYCLOAK_PRODUCTION
-              value: "true"
+#            - name: KEYCLOAK_PRODUCTION
+#              value: "true"
             - name: KEYCLOAK_HEAP_SIZE
               value: "1G"
           ports:
