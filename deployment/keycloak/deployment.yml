@@ -55,16 +55,16 @@ spec:
         - name: keycloak
           image: bitnamilegacy/keycloak:24.0.5
           env:
-            - name: KEYCLOAK_PROXY
-              value: "edge"
-            - name: KEYCLOAK_HTTP_ENABLED
-              value: "true"
+#            - name: KEYCLOAK_PROXY
+#              value: "edge"
+#            - name: KEYCLOAK_HTTP_ENABLED
+#              value: "true"
             - name: KEYCLOAK_HTTP_PORT
               value: "18080"
             - name: KEYCLOAK_HTTP_RELATIVE_PATH
               value: "/auth"
-            - name: KEYCLOAK_HOSTNAME
-              value: "keycloak.hipr.k8s"
+#            - name: KEYCLOAK_HOSTNAME
+#              value: "keycloak.hipr.k8s"
             - name: KEYCLOAK_FRONTEND_URL
               value: "https://keycloak.hipr.k8s/auth"
             - name: KEYCLOAK_DATABASE_HOST
