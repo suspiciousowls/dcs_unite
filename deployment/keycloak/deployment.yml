@@ -63,8 +63,6 @@ spec:
               value: "18080"
             - name: KEYCLOAK_HTTP_RELATIVE_PATH
               value: "/auth"
-            - name: KEYCLOAK_HOSTNAME
-              value: "keycloak.hipr.k8s"
             - name: KEYCLOAK_DATABASE_HOST
               value: "keycloak-postgres"
             - name: KEYCLOAK_DATABASE_PASSWORD
