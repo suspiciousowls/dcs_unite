@@ -80,8 +80,8 @@ spec:
           ports:
             - containerPort: 18080
               name: http
-            - containerPort: 8443
-              name: https
+#            - containerPort: 8443
+#              name: https
           volumeMounts:
             - name: tls-secret
               mountPath: /opt/bitnami/keycloak/certs
