@@ -70,7 +70,7 @@ spec:
             - name: KEYCLOAK_ADMIN_USER
               value: "admin"
             - name: KEYCLOAK_ADMIN_PASSWORD
-              value: "Y5q-MUV-6zt-dDe"
+              value: "Y5q-MUV-6zt-dDg"
             - name: JAVA_OPTS
               value: "-XX:+UseZGC -XX:MaxRAMPercentage=75.0"
 #            - name: KEYCLOAK_PRODUCTION
