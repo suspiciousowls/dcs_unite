@@ -9,7 +9,6 @@ controller:
     ports:
       http: 80
       https: 443
-      https-alt: 8443
 
   publishService:
     # -- Enable 'publishService' or not
