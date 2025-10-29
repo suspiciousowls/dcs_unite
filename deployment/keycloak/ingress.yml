@@ -8,10 +8,10 @@ metadata:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
 spec:
   ingressClassName: nginx
-  tls:
-    - hosts:
-        - keycloak.hipr.k8s
-      secretName: keycloak-tls
+#  tls:
+#    - hosts:
+#        - keycloak.hipr.k8s
+#      secretName: keycloak-tls
   rules:
     - host: keycloak.hipr.k8s
       http:
