@@ -55,8 +55,10 @@ spec:
         - name: keycloak
           image: bitnamilegacy/keycloak:24.0.5
           env:
-#            - name: KEYCLOAK_PROXY
-#              value: "edge"
+            - name: KEYCLOAK_PROXY
+              value: "edge"
+            - name: KC_PROXY
+              value: "edge"
 #            - name: KEYCLOAK_HTTP_ENABLED
 #              value: "true"
             - name: KEYCLOAK_HTTP_PORT
